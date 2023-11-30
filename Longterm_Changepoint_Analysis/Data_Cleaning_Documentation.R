@@ -1,5 +1,7 @@
 ## Assessing impacts of year 2000 depletion through time on SMB populations 
 
+## Please load in data associated with LML_P1_community-response.R to get the BEF_data data frame
+
 library(tidyr)
 library(tidyverse)
 ## Overall Depletion 
@@ -75,10 +77,10 @@ slope = lapply(depletion$day_regression, function(x) summary(x)) %>%
 
 left_join(p.value, slope)
 
-## Without filter there are 8 significant depletion, with filter there is only 1 significant depletion
+## Without filter there are 7/28 (25%) sites with significant depletion, with filter there is only 1 significant depletion
 ## Explore through the above regressions using....
 
-site_depletion = "005" ## enter the site here that you are interested in. It has to be a character
+site_depletion = "003" ## enter the site here that you are interested in. It has to be a character. Then you get summary of regression
 summary(depletion[[2]][[which(depletion$SITE == site_depletion)]])
 
 

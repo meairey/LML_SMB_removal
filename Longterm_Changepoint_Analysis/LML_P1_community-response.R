@@ -59,89 +59,10 @@ stocked = c("LLS", "RT") ## Stocked fish in LML to be excluded from analysis
 
 BEF_data = BEF_data_unfiltered %>%
   filter(SPECIES %nin% c(stocked, rare$SPECIES)) %>% 
-  filter(YEAR < 2020) %>%
-  filter(SPECIES != "SMB" | YEAR != 2000 | DAY_N < 160) ## Filter out BEF SMB data from the year 2000 that's later than DAY_N 160. Change this around depending on how you want to filter 2000... 
+  filter(YEAR < 2020) 
+#%>%
+  #filter(SPECIES != "SMB" | YEAR != 2000 | DAY_N < 160) ## Filter out BEF SMB data from the year 2000 that's later than DAY_N 160. Change this around depending on how you want to filter 2000... 
 
-
-
-
-
-
-
-BEF_data %>% filter(YEAR == 2000) %>%
-  filter(SPECIES == "SMB") %>% 
-  select(SITE, EFFORT, DSAMP_N, DAY_N) %>% 
-  group_by(DAY_N, DSAMP_N, SITE, EFFORT) %>% 
-  summarize(total_count = n()) %>% 
-  mutate(CPUE = (total_count / EFFORT)*60) %>% 
-  ggplot(aes(x = DAY_N, y = CPUE)) +
-  geom_point() + 
-  geom_smooth(method = "lm", se = F) +
-  #facet_wrap(~SITE) + 
-  ylab("CPUE Ind/Min") 
-
-BEF_data %>% filter(YEAR == 2000) %>%
-  filter(SPECIES == "SMB") %>% 
-  filter(SITE %in% c("001", "003", "005", "006","010", "011", "013")) %>%
- 
-  select(SITE, EFFORT, DSAMP_N, DAY_N) %>% 
-  filter(DAY_N < 160) %>%
-  group_by(DAY_N, DSAMP_N, SITE, EFFORT) %>% 
-  summarize(total_count = n()) %>% 
-  mutate(CPUE = (total_count / EFFORT)*60) %>% 
-  ggplot(aes(x = DAY_N, y = CPUE)) +
-  geom_point() + 
-  geom_smooth(method = "lm", se = F) +
-  #facet_wrap(~SITE) + 
-  ylab("CPUE Ind/Min") 
-  
-
-
-
-unfiltered = BEF_data %>% filter(YEAR == 2000) %>%
-  filter(SPECIES == "SMB") %>% 
-  select(SITE, EFFORT, DSAMP_N, DAY_N) %>%
-  group_by(DAY_N, DSAMP_N, SITE, EFFORT) %>% 
-  summarize(total_count = n()) %>% 
-  mutate(CPUE = (total_count / EFFORT)*60) %>% 
-  ungroup() %>% 
-  group_by(SITE) %>% 
-  summarize(mean_CPUE = mean(CPUE), sd_CPUE = sd(CPUE))
-
-
-filtered = BEF_data %>% filter(YEAR == 2000) %>% filter(DAY_N < 160) %>%
-  filter(SPECIES == "SMB") %>% 
-  select(SITE, EFFORT, DSAMP_N, DAY_N) %>%
-  group_by(DAY_N, DSAMP_N, SITE, EFFORT) %>% 
-  summarize(total_count = n()) %>% 
-  mutate(CPUE = (total_count / EFFORT)*60) %>% 
-  ungroup() %>% 
-  group_by(SITE) %>% 
-  summarize(mean_CPUE_filtered = mean(CPUE), sd_CPUE_filtered = sd(CPUE)) 
-
-
-
-
-
-
-left_join(filtered, unfiltered) %>% 
-  ggplot() +
-  geom_point(aes(x = SITE, y = mean_CPUE)) +
-  geom_pointrange(aes(x = SITE, y = mean_CPUE, 
-                      ymin = mean_CPUE - sd_CPUE,
-                      ymax = mean_CPUE + sd_CPUE)) + 
-  geom_point(aes(x = SITE, y = mean_CPUE_filtered), col = 2)
-  geom_pointrange(aes(x = SITE, y = mean_CPUE_filtered, 
-                      ymin = mean_CPUE_filtered - sd_CPUE_filtered,
-                      ymax = mean_CPUE_filtered + sd_CPUE_filtered), col = 2)
-  
-  
-left_join(filtered, unfiltered) %>% 
-  pivot_longer(cols = c(mean_CPUE_filtered, mean_CPUE ), names_to = "filter", values_to = "CPUE") %>% 
-  ggplot(aes(x = filter, y = CPUE)) + geom_boxplot()
-  
-  
-t.test(filtered$mean_CPUE_filtered, unfiltered$mean_CPUE)
 
 ## LML 
 species_names = c("Brown Bulllhead", "Creek Chub", "Common Shiner","Lake Trout","Central Mudminnow", "Pumpkinseed", "Rainbow Smelt", "Round Whitefish", "Smallmouth Bass", "Slimy Sculpin", "Brook Trout", "White Sucker")
@@ -169,10 +90,10 @@ CPUE.w.sec.a = ((CPUE_wide_seconds_avg(BEF_data) %>%
 
 ## Working on piecewise regressions -----------------------------------
 # CPUE in minutes
-species = colnames(CPUE.w.sec)
+#species = colnames(CPUE.w.sec)
 v = CPUE.w.sec %>% 
   mutate(y_s = rownames(CPUE.w.sec)) %>%
-  pivot_longer(1:length(species),
+  pivot_longer(1:length(codes$species),
                names_to = "Species") %>%
   separate(y_s, 
            into = c("Year", "site"), sep = "_") %>%
