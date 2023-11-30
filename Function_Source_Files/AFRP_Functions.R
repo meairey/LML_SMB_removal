@@ -1,9 +1,9 @@
 ### Loads in and reads data ----------------------------
-
-fish = read.csv("MA2276_Code/Data/FISH_MEASUREMENT_2022.csv")
-sample = read.csv("MA2276_Code/Data/FISH_SAMPLE_2022.csv")
-sites = read.csv("MA2276_Code/Data/SITES.csv")
-shoreline_length = read.csv("MA2276_Code/Data/BEFsites_LengthAndHabitat.csv")
+## These are large files that I don't want to upload to github please source from your own computer
+fish = read.csv("../AFRP/MA2276_Code/Data/FISH_MEASUREMENT_2022.csv") 
+sample = read.csv("../AFRP/MA2276_Code/Data/FISH_SAMPLE_2022.csv")
+sites = read.csv("../AFRP/MA2276_Code/Data/SITES.csv")
+shoreline_length = read.csv("../AFRP/MA2276_Code/Data/BEFsites_LengthAndHabitat.csv")
 
 species = unique(fish$SPECIES) # Defines the number of unique species in measurement file
 

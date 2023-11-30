@@ -1,18 +1,6 @@
 
 ### LML Analysis -- Paper 1
 
-## PIT tag -------------------------
-sample = read.csv("MA2276_Code/Data/FISH_SAMPLE_2022.csv")
-left_join(fish, sample, by = "YSAMP_N") %>% 
-  filter(TAG2_TYPE == "PIT") %>% 
-  filter
-
-cat =read.table(file = "Data/FISH_MEASUREMENT.txt", sep = ",") %>%
-  as.data.frame()
-dog = read.table(file="Data/FISH_SAMPLE_2023.txt", sep = ",") %>% as.data.frame()
-
-left_join(cat, dog, by = "YSAMP_N")
-
 
 ### Libraries --------------
 library(lattice)
@@ -32,15 +20,16 @@ library(gridExtra)
 library(ggnewscale)
 
 ## Functions source -----------
-source("AFRP_Master_Code/AFRP_Functions.R")
+# This is just setup at the project working directory. Use option in upper right corner of R to get into project directory. For example, on my computer,its stored in my family one-drive
+setwd("C:/Users/monta/OneDrive - Airey Family/GitHub/LML_SMB_removal")
+
+### Note - this source file will upload the data files. But you need to make sure to correct the source location for those data files for this to work...
+source("Function_Source_Files/AFRP_Functions.R")
 
 ### Data -------------------
-# This is just setup at the project working directory. Use option in upper right corner of R to get into project directory. For example, on my computer ,its stored in my family one-drive
-setwd("C:/Users/monta/OneDrive - Airey Family/GitHub/AFRP")
-
 
 #sample = read.csv("MA2276_Code//Data/FISH_SAMPLE_edited.csv")
-sample = read.csv("MA2276_Code/Data/FISH_SAMPLE_2022_editedsitenumbers.csv")
+sample = read.csv("../AFRP/MA2276_Code/Data/FISH_SAMPLE_2022_editedsitenumbers.csv")
 
 
 
@@ -49,70 +38,36 @@ sample = read.csv("MA2276_Code/Data/FISH_SAMPLE_2022_editedsitenumbers.csv")
 BEF_data_unfiltered = filter_data(water = "LML", gear = "BEF",
                                   gear_code = "NAF", 
                                   species = species) %>% 
-  #filter(MONTH %in% c(9,10))
   filter(MONTH %in% c(5,6), YEAR >= 1998) 
 
 
-## The filter function doesn't work for FBL
-BEF_data_unfiltered = left_join(fish, sample, by = "YSAMP_N") %>% 
-  filter(WATER == "LML",
-         GEAR == "BEF", 
-         GEAR_CODE %in% c("NAF", "DBO", "NBO"),
-         MONTH %in% c(5,6,9,10), 
-         YEAR >= 1998) %>%
-  rename(SITE = SITE_N)
-
-
-
 # Removing rare + stocked taxa ------------ 
+
 ## Taxa get removed if they are rare or if they are stocked given 
- 
 
 `%nin%` = Negate(`%in%`) # sets up a way to exclude if in a string
 
-rare_threashold = 50 ## change this based on preference
+rare_threashold = 50 ## change this based on preference. Here it is filtering out rare fish (NRD and BND)
 
 rare = BEF_data_unfiltered %>% ## This defines rare species 
   group_by(SPECIES) %>% 
   summarise(frequency = n()) %>% 
   filter(frequency < rare_threashold)
 
-stocked = c("LLS", "RT") ## Stocked fish in little moose
-
-remove = c(stocked, rare$SPECIES) 
+stocked = c("LLS", "RT") ## Stocked fish in LML to be excluded from analysis
 
 
+BEF_data = BEF_data_unfiltered %>%
+  filter(SPECIES %nin% c(stocked, rare$SPECIES)) %>% 
+  filter(YEAR < 2020) 
 
-BEF_data = BEF_data_unfiltered %>% filter(SPECIES %nin% remove) 
 
-
-
-v %>% filter(Year %in% c(2008:2014)) %>%
-  ggplot(aes(x = Year, y = value)) + geom_boxplot() + facet_wrap(~Species, scales = "free_y")
-  
-  
-  
-BEF_data_2000 = BEF_data_unfiltered %>%
-  filter(SPECIES %nin% remove) %>% 
-  filter(YEAR %in% c(2000)) %>% 
-  filter(SPECIES == "SMB") %>%
-  group_by(YEAR, SITE, DAY_N, DSAMP_N, EFFORT) %>% 
-  summarize(CPUE = n()) %>%
-  mutate(CPUE = CPUE / EFFORT) %>% 
-  ungroup() %>%
-  group_by(YEAR, SITE) %>%
-  summarize(first = first(CPUE)) %>% 
-  mutate(Species = "SMB") %>% 
-  mutate(ID = paste(SITE, Species, sep = "_"))
+%>%
+  filter(SPECIES != "SMB" | YEAR != 2000 | DAY_N < 160) ## Filter out BEF SMB data from the year 2000 that's later than DAY_N 160. Change this around depending on how you want to filter 2000... 
 
 
 
 
-
-
-#BEF_data = BEF_data %>% mutate(HAB_1 = "R") ## FOR FBL add in fake HAB
-
-## BEF year 2000
 
 BEF_data %>% filter(YEAR == 2000) %>%
   filter(SPECIES == "SMB") %>% 
@@ -126,9 +81,36 @@ BEF_data %>% filter(YEAR == 2000) %>%
   facet_wrap(~SITE) + 
   ylab("CPUE Ind/Min") 
 
+BEF_data %>% filter(YEAR == 2000) %>%
+  filter(SPECIES == "SMB") %>% 
+  select(SITE, EFFORT, DSAMP_N, DAY_N) %>% 
+  group_by(DAY_N, DSAMP_N, SITE, EFFORT) %>% 
+  summarize(total_count = n()) %>% 
+  mutate(CPUE = (total_count / EFFORT)*60) %>% 
+  ggplot(aes(x = DAY_N, y = CPUE)) +
+  geom_point() + 
+  geom_smooth(method = "lm", se = F) +
+  #facet_wrap(~SITE) + 
+  ylab("CPUE Ind/Min") 
 
-
+BEF_data %>% filter(YEAR == 2000) %>%
+  filter(SPECIES == "SMB") %>% 
+  filter(SITE %in% c("001", "003", "005", "006","010", "011", "013")) %>%
+ 
+  select(SITE, EFFORT, DSAMP_N, DAY_N) %>% 
+  filter(DAY_N < 160) %>%
+  group_by(DAY_N, DSAMP_N, SITE, EFFORT) %>% 
+  summarize(total_count = n()) %>% 
+  mutate(CPUE = (total_count / EFFORT)*60) %>% 
+  ggplot(aes(x = DAY_N, y = CPUE)) +
+  geom_point() + 
+  geom_smooth(method = "lm", se = F) +
+  #facet_wrap(~SITE) + 
+  ylab("CPUE Ind/Min") 
   
+
+
+
 unfiltered = BEF_data %>% filter(YEAR == 2000) %>%
   filter(SPECIES == "SMB") %>% 
   select(SITE, EFFORT, DSAMP_N, DAY_N) %>%
@@ -220,28 +202,8 @@ v = CPUE.w.sec %>%
 
 
 
-BEF_data_2000 = BEF_data_unfiltered %>%
-  filter(SPECIES %nin% remove) %>% 
-  filter(YEAR %in% c(2000)) %>% 
-  filter(SPECIES == "SMB") %>%
-  group_by(YEAR, SITE, DAY_N, DSAMP_N, EFFORT) %>% 
-  summarize(CPUE = n()) %>%
-  mutate(CPUE = CPUE / EFFORT) %>% 
-  ungroup() %>%
-  group_by(YEAR, SITE) %>%
-  summarize(first = first(CPUE)) %>% 
-  mutate(Species = "SMB") %>% 
-  mutate(ID = paste(SITE, Species, sep = "_")) %>% 
-  rename(value = first) %>%
-  select(YEAR, ID, Species, value) %>% 
-  rename(Year =YEAR) %>%
-  mutate(value = value * 60 * 60)
 
-V_mod = v %>% filter(Species != "SMB" | Year != 2000) %>% rbind(BEF_data_2000)
-
-
-v = V_mod
-### Checking out 2012
+## Checking out 2012
 
 v %>% ggplot(aes(x = Year, y = value)) + geom_boxplot() + facet_wrap(~Species, scales = "free_y") + 
   theme(axis.text.x = element_text(angle = 90))
@@ -264,7 +226,7 @@ for(i in 1:length(species)){
   x = v %>% filter(Species == species[i]) %>%
     mutate(value = as.numeric(value)) %>% 
     dplyr::select(-Species) %>%
-    #mutate(value = log10(value+1)) %>%
+    # mutate(value = log10(value + 1)) %>%
     pivot_wider(values_from = value,
                 names_from = ID) %>%
     replace(is.na(.), 0) %>%
@@ -390,7 +352,7 @@ for(i in 1:length(species)){
         
         scale_colour_manual(values=cbbPalette) +
         #scale_y_continuous(trans = 'log10') + 
-        xlim(1997, 2022)  + 
+        xlim(1997, 2019)  + 
         theme_minimal()+
         theme(legend.position="none") +
         theme(text = element_text(size = 7))
@@ -925,3 +887,16 @@ v %>% separate(ID, into = c("site", "Species")) %>% filter(Year == 2021) %>% mut
   theme(axis.text.x = element_text(angle = 90)) +ylab("CPUE ind/hour")
 
 
+### Extra Code
+BEF_data_2000 = BEF_data_unfiltered %>%
+  filter(SPECIES %nin% remove) %>% 
+  filter(YEAR %in% c(2000)) %>% 
+  filter(SPECIES == "SMB") %>%
+  group_by(YEAR, SITE, DAY_N, DSAMP_N, EFFORT) %>% 
+  summarize(CPUE = n()) %>%
+  mutate(CPUE = CPUE / EFFORT) %>% 
+  ungroup() %>%
+  group_by(YEAR, SITE) %>%
+  summarize(first = first(CPUE)) %>% 
+  mutate(Species = "SMB") %>% 
+  mutate(ID = paste(SITE, Species, sep = "_"))
