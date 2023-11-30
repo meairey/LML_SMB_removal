@@ -5,6 +5,7 @@ library(tidyverse)
 ## Overall Depletion 
 
 ##It looks like there is quite a bit of depletion, but I think that the graph is misleading...
+## Don't forget to double check the filter on BEF_data to get the range of dates you want included
 BEF_data %>% filter(YEAR == 2000) %>%
   filter(SPECIES == "SMB") %>% 
   select(SITE, EFFORT, DSAMP_N, DAY_N) %>% 
@@ -56,10 +57,6 @@ depletion = BEF_data %>% filter(YEAR == 2000 & SPECIES == "SMB") %>%
   group_by(SITE) %>%
   do(day_regression = lm(CPUE ~ DAY_N , data = .))
   
-## Explore through the above regressions using....
-
-site_depletion = "005" ## enter the site here that you are interested in. It has to be a character
-summary(depletion[[2]][[which(depletion$SITE == site_depletion)]])
 
 ## Not many of these are significant... not even site 1. These aren't normal data so this isn't perfect. But I'm not sure there is statistical proof of depletion through time at these sites
 
@@ -70,13 +67,19 @@ p.value = lapply(depletion$day_regression, function(x) summary(x)) %>%
   lapply(., function(x) p.value = max(x$coefficients[,4])) %>% unlist() %>%
   as.data.frame() %>% 
   rename("p.value" = ".") %>% mutate(depletion$SITE) %>% filter(p.value < .05)
+
 slope = lapply(depletion$day_regression, function(x) summary(x)) %>%
   lapply(., function(x) slope = x$coefficients[,1][2])%>% unlist() %>%
   as.data.frame() %>% 
   rename("slope" = ".") %>% mutate(depletion$SITE) 
+
 left_join(p.value, slope)
 
 ## Without filter there are 8 significant depletion, with filter there is only 1 significant depletion
+## Explore through the above regressions using....
+
+site_depletion = "005" ## enter the site here that you are interested in. It has to be a character
+summary(depletion[[2]][[which(depletion$SITE == site_depletion)]])
 
 
-## Conclusion - I'm not sure there is any correct answer here... SMB are the treatment, not a response variable. I'd either pick averaging across all data points for 2000 or filtering within a date range like 130 - 160. 
+## Conclusion - I'm not sure there is any correct answer here... SMB are the treatment, not a response variable. I'd either pick averaging across all data points for 2000 or filtering within a date range like 130 - 160. The first value from each site seems like a bad representation of the data given that a site first sampled on Day 135 != CPUE from site first sampled day 145+
