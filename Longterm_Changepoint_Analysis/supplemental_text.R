@@ -77,7 +77,10 @@ BEF_data %>% dplyr::select(YEAR, MONTH, SITE, EFFORT, DATE_COL, DSAMP_N)
 ## Julian day --- Supplemental -----
 BEF_data %>% dplyr::select(MONTH, YEAR, SITE,EFFORT, DAY_N, GEAR_CODE) %>% 
   mutate(MONTH_color = as.character(as.factor(.bincode(MONTH, spring_fall)))) %>%
-  unique() %>% 
+  unique() %>% filter(YEAR == 2012)
+
+
+%>% 
   ggplot(aes(x = YEAR,
              y = DAY_N#, 
              #col = as.character(as.factor(GEAR_CODE)),
@@ -93,7 +96,7 @@ BEF_data %>% dplyr::select(MONTH, YEAR, SITE,EFFORT, DAY_N, GEAR_CODE) %>%
   theme(axis.text = element_text(size = 13), 
         text = element_text(size = 13)) + 
   ylim(100,250) + 
-  xlim(1998, 2019)
+  xlim(2010, 2013)
     
     #+
   #guides(colour = guide_legend(override.aes = list(size=3))) + 

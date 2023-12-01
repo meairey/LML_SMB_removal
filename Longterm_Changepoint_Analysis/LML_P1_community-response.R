@@ -6,7 +6,6 @@
 library(lattice)
 library(MASS)
 library(dplyr)
-#install.packages("pscl")
 require(pscl) # alternatively can use package ZIM for zero-inflated 
 library(lmtest)
 library(dplyr)
@@ -106,41 +105,28 @@ v = CPUE.w.sec %>%
   mutate(value = value * 60 * 60 )
 
 
-
-
-
-
-
-## Checking out 2012
-
-v %>% ggplot(aes(x = Year, y = value)) + geom_boxplot() + facet_wrap(~Species, scales = "free_y") + 
-  theme(axis.text.x = element_text(angle = 90))
-
-
-
 # Colorblind pallete
 cbbPalette <- c("#000000",  "#56B4E9", "#D55E00","#009E73","#CEC6C6", "#0072B2","#E69F00","#F0E442",  "#CC79A7")
-## Tommy said to get rid of the regressions for each breakpoint so I'm not going to go through and just add in the means. 
-# Also try jitter
 
-graph_list = list()
+graph_list = list() # Create list of graphs for plotting
 for(i in 1:length(species)){
   
-  pdf(file = paste("C:/Users/monta/OneDrive - Airey Family/GitHub/AFRP/MA2276_Code/Graphics/LMLP1/",species[i], "_cpue.pdf", sep = ""),   # The directory you want to save the file in
-    width = 4, # The width of the plot in inches
-    height = 4) # The height of the plot in inches
+  # The directory you want to save the file in - if you want to save pdfs
+  #pdf(file = paste("C:/Users/monta/OneDrive - Airey Family/GitHub/AFRP/MA2276_Code/Graphics/LMLP1/",species[i], "_cpue.pdf", sep = ""),  
+    #width = 4, # The width of the plot in inches
+    #height = 4) # The height of the plot in inches
   
   # Set up data frame
   x = v %>% filter(Species == species[i]) %>%
     mutate(value = as.numeric(value)) %>% 
     dplyr::select(-Species) %>%
-    # mutate(value = log10(value + 1)) %>%
     pivot_wider(values_from = value,
                 names_from = ID) %>%
     replace(is.na(.), 0) %>%
     dplyr::select(-Year) %>%
     as.matrix()
-  rownames(x) = rownames(CPUE.w.sec.a)
+  
+  rownames(x) = rownames(CPUE.w.sec.a) # Sequence of years 
   
   # Run changepoint analysis 
   output = e.divisive(x, 
@@ -152,6 +138,7 @@ for(i in 1:length(species)){
   # Format data
   dat = data.frame(Year = rownames(CPUE.w.sec.a), 
                    color = output$cluster)
+  
   v_mod = left_join(v,dat)
   
   
@@ -211,7 +198,8 @@ for(i in 1:length(species)){
                 lwd = 1) + 
       
       
-      theme(text = element_text(size = 7)) 
+      theme(text = element_text(size = 9)) + 
+      theme(axis.text.x = element_text(angle =90))
     
   } else {
       dat_graph = v_mod %>% filter(Species == species[i])%>%
@@ -263,12 +251,13 @@ for(i in 1:length(species)){
         xlim(1997, 2019)  + 
         theme_minimal()+
         theme(legend.position="none") +
-        theme(text = element_text(size = 7))
+        theme(text = element_text(size = 9)) + 
+        theme(axis.text.x = element_text(angle =90))
       
     }
     
     print(graph_list[[i]])
-    dev.off()
+    #dev.off()
 }
 # Grid Arrange Graphic 
 do.call("grid.arrange", c(graph_list, ncol=4))
@@ -510,8 +499,8 @@ CPUE.w.sec %>% rownames_to_column(var = "year_site") %>%
   ggplot(aes(x = year, y = CPUE)) +
   theme_bw() +
   geom_boxplot()+ 
-  scale_y_continuous(
-    labels = scales::number_format(accuracy = 0.0001)) +
+  #scale_y_continuous(
+   # labels = scales::number_format(accuracy = 0.01)) +
   xlab("") + ylab("CPUE (Individuals / Hour)") +
   facet_wrap(~species_names, scales = "free_y")
 
@@ -696,7 +685,7 @@ for(i in 1:length(species)){
 
 
 
-
+data.2000
 
 
 
@@ -761,9 +750,12 @@ wilcox.test(data.2001$RWF, data.2019$RWF, exact = F)
 
 
 # SS
-wilcox.test(data.2000$SS, data.2001$SS, exact = F)
-wilcox.test(data.2000$SS, data.2019$SS, exact = F)
-wilcox.test(data.2001$SS, data.2019$SS, exact = F)
+data.2000.SS = v %>% filter(species == "SS" & Year == 2000)
+data.2001.SS = v %>% filter(species == "SS"& Year == 2001)
+data.2019.SS = v %>% filter(species == "SS"& Year == 2019)
+wilcox.test(data.2000.SS$value, data.2001.SS$value, exact = F)
+wilcox.test(data.2001.SS$value, data.2019.SS$value, exact = F)
+wilcox.test(data.2000.SS$value, data.2019.SS$value, exact = F)
 
 # SS
 wilcox.test(data.2000$SMB, data.2001$SMB, exact = F)
