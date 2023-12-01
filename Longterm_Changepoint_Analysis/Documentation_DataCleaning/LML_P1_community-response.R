@@ -60,6 +60,7 @@ stocked = c("LLS", "RT") ## Stocked fish in LML to be excluded from analysis
 BEF_data = BEF_data_unfiltered %>%
   filter(SPECIES %nin% c(stocked, rare$SPECIES)) %>% 
   filter(YEAR < 2020) %>% filter(SPECIES != "SMB" | YEAR != 2000 | DAY_N < 160) ## Filter out BEF SMB data from the year 2000 that's later than DAY_N 160. Change this around depending on how you want to filter 2000... 
+  
 
 
 ## LML 
@@ -69,7 +70,8 @@ codes = data.frame((species_codes = unique(BEF_data$SPECIES))) %>%
   arrange(species_codes)
 
 codes = data.frame(species_names = species_names, 
-                   species = codes$X.species_codes )
+                   species = codes$X.species_codes)
+species = codes$species
 # Colorblind pallete
 cbbPalette <- c("#000000",  "#56B4E9", "#D55E00","#009E73","#CEC6C6", "#0072B2","#E69F00","#F0E442",  "#CC79A7")
 
@@ -77,7 +79,9 @@ cbbPalette <- c("#000000",  "#56B4E9", "#D55E00","#009E73","#CEC6C6", "#0072B2",
 #species_names = c("Creek Chub","Lake Trout", "Central Mudminnow", "Smallmouth Bass", "Brook Trout", "White Sucker")
 #species_names_fall=   c("Creek Chub", "Central Mudminnow", "Smallmouth Bass", "White Sucker")
 
-# Data setup
+# CPUE changepoint ------------------------------
+
+#### Data setup ---------------------
 CPUE.w.sec = ((CPUE_wide_seconds(BEF_data) %>%
                  unite("Group", c(YEAR, SITE)) %>% 
                  column_to_rownames(., var = "Group") %>% 
@@ -85,12 +89,12 @@ CPUE.w.sec = ((CPUE_wide_seconds(BEF_data) %>%
                  filter(sumrow>0) %>%
                  select(-sumrow)))
 
+write.csv(CPUE.w.sec, file="CPUE.w.sec.csv")
+dev.off()
+
 CPUE.w.sec.a = ((CPUE_wide_seconds_avg(BEF_data) %>% 
                    column_to_rownames(., var = "YEAR")))
 
-## Working on piecewise regressions -----------------------------------
-# CPUE in minutes
-#species = colnames(CPUE.w.sec)
 v = CPUE.w.sec %>% 
   mutate(y_s = rownames(CPUE.w.sec)) %>%
   pivot_longer(1:length(codes$species),
@@ -105,8 +109,8 @@ v = CPUE.w.sec %>%
   dplyr::select(-site) %>%
   mutate(value = value * 60 * 60 )
 
-species = codes$species
 
+#### Graphing Loop --------------------------
 graph_list = list() # Create list of graphs for plotting
 for(i in 1:length(codes$species)){
   
@@ -161,7 +165,6 @@ for(i in 1:length(codes$species)){
       ylab(paste(species_names[i], "Indv / Hour") )+ xlab("Year") + 
       theme(legend.position="none") + 
       geom_vline(xintercept = 2000, linetype = "dashed") +
-      xlim(1997, 2022) + 
       theme_minimal()+ 
       theme(legend.position = "none") +
       new_scale_color() + 
@@ -177,7 +180,9 @@ for(i in 1:length(codes$species)){
                 lwd = 1) + 
       theme(text = element_text(size = 7)) + 
       theme(axis.text.x = element_text(angle =90, size = 9)) + 
-      theme(axis.text.y = element_text(size = 9))
+      theme(axis.text.y = element_text(size = 9)) +
+      xlim(1997, 2019) + 
+      theme(plot.margin = margin(.25, .5, .25, .5, "cm")) 
     
   } else { ## Graphs with regressions
       dat_graph = v_mod %>% filter(Species == species[i])%>%
@@ -224,12 +229,13 @@ for(i in 1:length(codes$species)){
                    linetype = "dashed") +
         ylab(paste(species_names[i], "Indv / Hour") ) +
         xlab("Year") + 
-        scale_colour_manual(values=cbbPalette) +
-        xlim(1997, 2019)  + 
+        scale_colour_manual(values=cbbPalette) + 
         theme(legend.position="none") +
         theme(text = element_text(size = 7)) + 
         theme(axis.text.x = element_text(angle =90, size = 9)) + 
-        theme(axis.text.y = element_text(size = 9))
+        theme(axis.text.y = element_text(size = 9)) +
+        theme(plot.margin = margin(.25, .5, .25, .5, "cm")) +
+        xlim(1997, 2019) 
       
     }
 }
@@ -271,7 +277,7 @@ cp_data %>% ggplot(aes(x = year,
         legend.text=element_text(size=9)) + 
   theme_minimal() + 
   geom_vline(xintercept = 2000, linetype = 2)
-## Write a PDF ---------------------
+## Write a PDF 
 pdf(file = paste("C:/Users/monta/OneDrive - Airey Family/GitHub/AFRP/MA2276_Code/Graphics/LMLP1/max_length_CPUE_CP.pdf", sep = ""),   # The directory you want to save the file in
     width = 6, # The width of the plot in inches
     height = 4)
