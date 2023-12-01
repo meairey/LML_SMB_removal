@@ -71,6 +71,8 @@ codes = data.frame((species_codes = unique(BEF_data$SPECIES))) %>%
 
 codes = data.frame(species_names = species_names, 
                    species = codes$X.species_codes )
+# Colorblind pallete
+cbbPalette <- c("#000000",  "#56B4E9", "#D55E00","#009E73","#CEC6C6", "#0072B2","#E69F00","#F0E442",  "#CC79A7")
 
 ## FBL 
 #species_names = c("Creek Chub","Lake Trout", "Central Mudminnow", "Smallmouth Bass", "Brook Trout", "White Sucker")
@@ -104,17 +106,8 @@ v = CPUE.w.sec %>%
   dplyr::select(-site) %>%
   mutate(value = value * 60 * 60 )
 
-
-# Colorblind pallete
-cbbPalette <- c("#000000",  "#56B4E9", "#D55E00","#009E73","#CEC6C6", "#0072B2","#E69F00","#F0E442",  "#CC79A7")
-
 graph_list = list() # Create list of graphs for plotting
 for(i in 1:length(species)){
-  
-  # The directory you want to save the file in - if you want to save pdfs
-  #pdf(file = paste("C:/Users/monta/OneDrive - Airey Family/GitHub/AFRP/MA2276_Code/Graphics/LMLP1/",species[i], "_cpue.pdf", sep = ""),  
-    #width = 4, # The width of the plot in inches
-    #height = 4) # The height of the plot in inches
   
   # Set up data frame
   x = v %>% filter(Species == species[i]) %>%
@@ -144,7 +137,7 @@ for(i in 1:length(species)){
   
   # If there are multiple breakpoints plot the means of the chunks
 
-  if((2 %in% v_mod$color) == TRUE){
+  if((2 %in% v_mod$color) == TRUE){ ## Graphs with changepoints 
     dat_graph = v_mod %>% filter(Species == species[i])%>%
       mutate(value = round(value))
     
@@ -152,23 +145,15 @@ for(i in 1:length(species)){
       group_by(color) %>% 
       dplyr::summarize(mean = mean(value))
     
-    fred = left_join(dat_graph, mean_cpue)
+    dat_full = left_join(dat_graph, mean_cpue)n## I'm trying to find out if i need all three of dat full and cluster means
     
-
-    for(z in 1:length(unique(v_mod$color))){
-      
-      
-      
-      
-      try.yr = dat_graph %>% filter(Year %in% 
-                                unique((v_mod %>% 
-                                          filter(color == z))$Year)) 
-      cluster_means = left_join(fred, mean_cpue)
-    }
+    cluster_means = left_join(dat_full, mean_cpue)
     
-    cluster_line = cluster_means %>% select(Year, color, mean) %>% unique()
-
-
+    cluster_means = left_join(dat_graph, mean_cpue) %>% left_join(mean_cpue)
+    
+    cluster_line = cluster_means %>%
+      select(Year, color, mean) %>% 
+      unique()
 
     graph_list[[i]] = ggplot() + 
       geom_jitter(data = dat_graph, aes(x = as.numeric(Year), 
@@ -183,25 +168,21 @@ for(i in 1:length(species)){
       geom_vline(xintercept = 2000, linetype = "dashed") +
       xlim(1997, 2022) + 
       theme_minimal()+ 
-      theme(legend.position="none") +
+      theme(legend.position = "none") +
       new_scale_color() + 
-      scale_colour_manual(values = c("#707173", 
-                                              "#7088b8",
-                                              "#E69F00", 
-                                             "#6fa373"))+
-      geom_line(data = cluster_line, aes(x = as.numeric(Year), 
-                                         y = mean, 
-                                         col = as.character(color),
-                                         
-                                         ),
-                
+      scale_colour_manual(values = c("#707173",
+                                     "#7088b8",
+                                     "#E69F00", 
+                                     "#6fa373"))+
+      geom_line(data = cluster_line, 
+                aes(x = as.numeric(Year),
+                    y = mean,
+                    col = as.character(color),),
                 lwd = 1) + 
-      
-      
       theme(text = element_text(size = 9)) + 
       theme(axis.text.x = element_text(angle =90))
     
-  } else {
+  } else { ## Graphs with regressions
       dat_graph = v_mod %>% filter(Species == species[i])%>%
         mutate(value = round(value)) 
       
@@ -231,6 +212,7 @@ for(i in 1:length(species)){
       pred_data = cbind(dat_graph.yr, Pred)
       
       graph_list[[i]] = ggplot() + 
+        theme_minimal()+
         geom_jitter(data = dat_graph,
                     aes(x = as.numeric(Year),y = value),
                     color = "black", 
@@ -245,19 +227,13 @@ for(i in 1:length(species)){
                    linetype = "dashed") +
         ylab(paste(species_names[i], "CPUE / Hour") ) +
         xlab("Year") + 
-        
         scale_colour_manual(values=cbbPalette) +
-        #scale_y_continuous(trans = 'log10') + 
         xlim(1997, 2019)  + 
-        theme_minimal()+
         theme(legend.position="none") +
         theme(text = element_text(size = 9)) + 
         theme(axis.text.x = element_text(angle =90))
       
     }
-    
-    print(graph_list[[i]])
-    #dev.off()
 }
 # Grid Arrange Graphic 
 do.call("grid.arrange", c(graph_list, ncol=4))
