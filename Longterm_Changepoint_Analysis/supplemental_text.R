@@ -77,10 +77,6 @@ BEF_data %>% dplyr::select(YEAR, MONTH, SITE, EFFORT, DATE_COL, DSAMP_N)
 ## Julian day --- Supplemental -----
 BEF_data %>% dplyr::select(MONTH, YEAR, SITE,EFFORT, DAY_N, GEAR_CODE) %>% 
   mutate(MONTH_color = as.character(as.factor(.bincode(MONTH, spring_fall)))) %>%
-  unique() %>% filter(YEAR == 2012)
-
-
-%>% 
   ggplot(aes(x = YEAR,
              y = DAY_N#, 
              #col = as.character(as.factor(GEAR_CODE)),
@@ -94,9 +90,10 @@ BEF_data %>% dplyr::select(MONTH, YEAR, SITE,EFFORT, DAY_N, GEAR_CODE) %>%
   #scale_shape_discrete(labels = c("Spring", "Fall")) + 
   xlab("Year") + 
   theme(axis.text = element_text(size = 13), 
-        text = element_text(size = 13)) + 
-  ylim(100,250) + 
-  xlim(2010, 2013)
+        text = element_text(size = 13), 
+        axis.text.x = element_text(angle = 90)) + 
+  ylim(110,175) + 
+  xlim(1998, 2020)
     
     #+
   #guides(colour = guide_legend(override.aes = list(size=3))) + 
@@ -142,4 +139,4 @@ BEF_data %>%
 # Go through and add back in the 2012 data
 # Go through and make sure to weed out the later 2000 dates for just the SMB
 
-
+## Checking # of sites through time

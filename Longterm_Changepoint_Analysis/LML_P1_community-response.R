@@ -32,13 +32,14 @@ sample = read.csv("../AFRP/MA2276_Code/Data/FISH_SAMPLE_2022_editedsitenumbers.c
 
 
 
+BEF_data_unfiltered =left_join(fish, sample, by = "YSAMP_N") %>% 
+  left_join(sites, by = "SITE_N") %>% 
+  left_join(shoreline_length, by = "SITE_N") %>%
+  separate(SITE_N,  into = c("GEAR", "WATER","SITE")) %>%
+  filter(WATER == "LML" & GEAR == "BEF"& GEAR_CODE == "NAF" & YEAR < 2020 & MONTH %in% c(5,6))
 
-# Boat Electrofishing Data - make sure you specify what parameters you want to query from the database 
-BEF_data_unfiltered = filter_data(water = "LML", gear = "BEF",
-                                  gear_code = "NAF", 
-                                  species = species) %>% 
-  filter(MONTH %in% c(5,6), YEAR >= 1998) 
 
+BEF_data_unfiltered %>% filter(YEAR == 2012) %>% select(SITE) %>% unique()%>% dim()
 
 # Removing rare + stocked taxa ------------ 
 
@@ -58,9 +59,7 @@ stocked = c("LLS", "RT") ## Stocked fish in LML to be excluded from analysis
 
 BEF_data = BEF_data_unfiltered %>%
   filter(SPECIES %nin% c(stocked, rare$SPECIES)) %>% 
-  filter(YEAR < 2020) 
-#%>%
-  #filter(SPECIES != "SMB" | YEAR != 2000 | DAY_N < 160) ## Filter out BEF SMB data from the year 2000 that's later than DAY_N 160. Change this around depending on how you want to filter 2000... 
+  filter(YEAR < 2020) %>% filter(SPECIES != "SMB" | YEAR != 2000 | DAY_N < 160) ## Filter out BEF SMB data from the year 2000 that's later than DAY_N 160. Change this around depending on how you want to filter 2000... 
 
 
 ## LML 
@@ -106,12 +105,14 @@ v = CPUE.w.sec %>%
   dplyr::select(-site) %>%
   mutate(value = value * 60 * 60 )
 
+species = codes$species
+
 graph_list = list() # Create list of graphs for plotting
-for(i in 1:length(species)){
+for(i in 1:length(codes$species)){
   
   # Set up data frame
-  x = v %>% filter(Species == species[i]) %>%
-    mutate(value = as.numeric(value)) %>% 
+  x = v %>% filter(Species == codes$species[i]) %>%
+    mutate(value = as.numeric(value)) %>%
     dplyr::select(-Species) %>%
     pivot_wider(values_from = value,
                 names_from = ID) %>%
@@ -129,11 +130,9 @@ for(i in 1:length(species)){
                       sig.lvl = .05)
   
   # Format data
-  dat = data.frame(Year = rownames(CPUE.w.sec.a), 
-                   color = output$cluster)
-  
-  v_mod = left_join(v,dat)
-  
+  v_mod = left_join(v, (data.frame(Year = rownames(CPUE.w.sec.a), 
+                   color = output$cluster)))
+
   
   # If there are multiple breakpoints plot the means of the chunks
 
@@ -145,13 +144,9 @@ for(i in 1:length(species)){
       group_by(color) %>% 
       dplyr::summarize(mean = mean(value))
     
-    dat_full = left_join(dat_graph, mean_cpue)n## I'm trying to find out if i need all three of dat full and cluster means
-    
-    cluster_means = left_join(dat_full, mean_cpue)
-    
-    cluster_means = left_join(dat_graph, mean_cpue) %>% left_join(mean_cpue)
-    
-    cluster_line = cluster_means %>%
+    #cluster_means = left_join(dat_graph, mean_cpue) # combining the clusters with a mean cpue for that cluster
+
+    cluster_line = left_join(dat_graph, mean_cpue) %>%
       select(Year, color, mean) %>% 
       unique()
 
@@ -173,14 +168,16 @@ for(i in 1:length(species)){
       scale_colour_manual(values = c("#707173",
                                      "#7088b8",
                                      "#E69F00", 
-                                     "#6fa373"))+
+                                     "#6fa373",
+                                     "#E69F00"))+
       geom_line(data = cluster_line, 
                 aes(x = as.numeric(Year),
                     y = mean,
                     col = as.character(color),),
                 lwd = 1) + 
-      theme(text = element_text(size = 9)) + 
-      theme(axis.text.x = element_text(angle =90))
+      theme(text = element_text(size = 7)) + 
+      theme(axis.text.x = element_text(angle =90, size = 9)) + 
+      theme(axis.text.y = element_text(size = 9))
     
   } else { ## Graphs with regressions
       dat_graph = v_mod %>% filter(Species == species[i])%>%
@@ -225,13 +222,14 @@ for(i in 1:length(species)){
                   lwd = 1) + 
         geom_vline(xintercept = 2000,
                    linetype = "dashed") +
-        ylab(paste(species_names[i], "CPUE / Hour") ) +
+        ylab(paste(species_names[i], "Indv / Hour") ) +
         xlab("Year") + 
         scale_colour_manual(values=cbbPalette) +
         xlim(1997, 2019)  + 
         theme(legend.position="none") +
-        theme(text = element_text(size = 9)) + 
-        theme(axis.text.x = element_text(angle =90))
+        theme(text = element_text(size = 7)) + 
+        theme(axis.text.x = element_text(angle =90, size = 9)) + 
+        theme(axis.text.y = element_text(size = 9))
       
     }
 }
@@ -498,12 +496,13 @@ c.data = v %>% select(Year, Species,ID,  value) %>% rename(year = Year) %>% sepa
 
 
 
-
+Build the means and standard deviations into this table... ## Text so i don't foorget to do this
 wilcox_list = list()
 for(i in 1:length(species)){
   
     dat = c.data %>% 
         filter(species == species[i])
+    
     # data frames
     data.2000 = dat %>% filter(year == 2000)
     data.2001 = dat %>% filter(year == 2001)
@@ -518,6 +517,8 @@ for(i in 1:length(species)){
     # Build dataframe 
     
     wilcox_list[[i]] = data.frame(name = rep(species[i], 3), year = c(2000, 2001, 2019), p.value = c(a$p.value, b$p.value, c$p.value), W_statistic = c(a$statistic, b$statistic, c$statistic))
+    
+    
     
     
 }
