@@ -58,8 +58,8 @@ stocked = c("LLS", "RT") ## Stocked fish in LML to be excluded from analysis
 
 
 BEF_data = BEF_data_unfiltered %>%
-  filter(SPECIES %nin% c(stocked, rare$SPECIES)) %>% 
-  filter(YEAR < 2020) %>% filter(SPECIES != "SMB" | YEAR != 2000 | DAY_N < 160) ## Filter out BEF SMB data from the year 2000 that's later than DAY_N 160. Change this around depending on how you want to filter 2000... 
+  filter(SPECIES %nin% c(stocked, rare$SPECIES)) #%>% 
+  #filter(YEAR < 2020) %>% filter(SPECIES != "SMB" | YEAR != 2000 | DAY_N < 160) ## Filter out BEF SMB data from the year 2000 that's later than DAY_N 160. Change this around depending on how you want to filter 2000... 
   
 
 

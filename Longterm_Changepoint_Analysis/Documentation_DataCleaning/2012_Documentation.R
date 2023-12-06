@@ -2,7 +2,7 @@
 ## Please load in data associated with LML_P1_community-response.R to get the BEF_data and v data frame
 
 ## Sites sampled in May vs. June in 2012
-
+month_bin = c(0,5,6)
 may_sites = BEF_data %>% 
   filter(YEAR == 2012) %>% 
   select(SITE, MONTH) %>% 
@@ -11,7 +11,11 @@ may_sites = BEF_data %>%
   pivot_wider(names_from = MONTH, values_from = value) %>% 
   filter(`5` ==1 & `6` ==1)
 
-
+species = unique(BEF_data$SPECIES) %>%
+  as.data.frame() %>% 
+  rename(species = ".") %>% 
+  arrange(species) 
+species = species$species
 ## All sites and seasons
  for(i in species){
     graph = BEF_data %>% 
@@ -57,10 +61,49 @@ for(i in species[-1]){
   print(graph)
 }
 
+## Looking at differences between 2012 may/june sampling
+for(i in species[-1]){
+  graph = BEF_data %>% 
+    filter(SPECIES == i) %>%
+    filter(YEAR == 2012) %>%
+    filter(SITE %in% may_sites$SITE ) %>%
+    mutate(MONTH_binned = .bincode(MONTH, month_bin)) %>% 
+    group_by(YEAR, SPECIES, SITE, MONTH,MONTH_binned, DSAMP_N, EFFORT) %>% 
+    summarize(CPUE_min = n()) %>% 
+    mutate(CPUE_min = (CPUE_min / EFFORT)*60) %>%
+    ungroup() %>%
+    complete(MONTH_binned, YEAR, SPECIES, SITE) %>% 
+    mutate(CPUE_min = replace_na(CPUE_min, 0)) %>%
+    ggplot(aes(x = (YEAR),
+               y = CPUE_min,
+               col = as.factor(MONTH_binned))) + 
+    
+    theme_minimal() +
+    geom_boxplot() +
+    theme(axis.text.x = element_text(angle = 90)) +
+    labs(col = paste(i, "Month Sampled")) 
+  print(graph)
+}
+## t.test for differences in the year 2012
+for(i in species[c(-1,-4,-8)]){
+  ws = BEF_data %>% 
+    filter(SPECIES == i) %>%
+    filter(YEAR == 2012) %>%
+    filter(SITE %in% may_sites$SITE ) %>%
+    mutate(MONTH_binned = .bincode(MONTH, month_bin)) %>% 
+    group_by(YEAR, SPECIES, SITE, MONTH,MONTH_binned, DSAMP_N, EFFORT) %>% 
+    summarize(CPUE_min = n()) %>% 
+    mutate(CPUE_min = (CPUE_min / EFFORT)*60) %>%
+    ungroup() %>%
+    complete(MONTH_binned, YEAR, SPECIES, SITE) %>% 
+    mutate(CPUE_min = replace_na(CPUE_min, 0)) 
+  
+  a = ws %>% filter(MONTH_binned == 1)
+  b = ws %>% filter(MONTH_binned == 2)
+  print(i)
+  print(t.test(a$CPUE_min,b$CPUE_min))
 
-
-
-
+}
 
 
 v %>%
