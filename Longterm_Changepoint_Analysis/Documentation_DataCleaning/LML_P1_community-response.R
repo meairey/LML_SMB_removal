@@ -73,7 +73,7 @@ bef_1999 = BEF_data_unfiltered %>%
 site_matrix = rbind(bef_1999, BEF_1998, post_2002) %>% as.data.frame()
 #BEF_data_unfiltered = bef_unfiltered_saved
 
-BEF_data_unfiltered = left_join(BEF_data_unfiltered, site_matrix) %>% 
+BEF_data_unfiltered = left_join(BEF_data_unfiltered, site_matrix) %>% ## Make sure to use this BEF_data_unfiltered for final graphs
   mutate(SITE_cat = case_when(YEAR %nin% c(1998, 1999) ~ parse_number(SITE), YEAR %in% c(1998, 1999) ~ as.numeric(SITE_num))) %>%
   select(-SITE) %>% 
   rename(SITE = SITE_cat) %>% 
@@ -103,8 +103,8 @@ stocked = c("LLS", "RT") ## Stocked fish in LML to be excluded from analysis
 
 
 BEF_data = BEF_data_unfiltered%>%
-  filter(SPECIES %nin% c(stocked, rare$SPECIES)) #%>% 
-  #filter(YEAR < 2020) %>% filter(SPECIES != "SMB" | YEAR != 2000 | DAY_N < 160) ## Filter out BEF SMB data from the year 2000 that's later than DAY_N 160. Change this around depending on how you want to filter 2000... 
+  filter(SPECIES %nin% c(stocked, rare$SPECIES)) %>% 
+  filter(YEAR < 2020) %>% filter(SPECIES != "SMB" | YEAR != 2000 | DAY_N < 160) ## Filter out BEF SMB data from the year 2000 that's later than DAY_N 160. Change this around depending on how you want to filter 2000... 
   
 
 
