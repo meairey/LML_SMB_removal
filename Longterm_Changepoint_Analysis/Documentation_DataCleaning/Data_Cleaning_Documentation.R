@@ -85,3 +85,44 @@ summary(depletion[[2]][[which(depletion$SITE == site_depletion)]])
 
 
 ## Conclusion - I'm not sure there is any correct answer here... SMB are the treatment, not a response variable. I'd either pick averaging across all data points for 2000 or filtering within a date range like 130 - 160. The first value from each site seems like a bad representation of the data given that a site first sampled on Day 135 != CPUE from site first sampled day 145+
+
+
+
+## First vs. last 
+
+first = BEF_data %>% filter(YEAR == 2000 & SPECIES == species_interest) %>%
+ # filter(SITE %nin% c("001", "005")) %>%
+  filter(DAY_N < 160) %>%
+  select(SITE, EFFORT, DSAMP_N, DAY_N) %>% 
+  group_by(DAY_N, DSAMP_N, SITE, EFFORT) %>% 
+  summarize(total_count = n()) %>% 
+  mutate(CPUE = (total_count / EFFORT)*60) %>%
+  ungroup() %>% 
+  group_by(SITE) %>%
+  summarize(first = first(CPUE)) %>% na.omit()
+last = BEF_data %>% filter(YEAR == 2000 & SPECIES == species_interest) %>%
+  filter(DAY_N < 160) %>%
+  #filter(SITE %nin% c("001", "005")) %>%
+  select(SITE, EFFORT, DSAMP_N, DAY_N) %>% 
+  group_by(DAY_N, DSAMP_N, SITE, EFFORT) %>% 
+  summarize(total_count = n()) %>% 
+  mutate(CPUE = (total_count / EFFORT)*60) %>%
+  ungroup() %>% 
+  group_by(SITE) %>%
+  summarize(first = last(CPUE)) %>% na.omit()
+
+wilcox.test(first$first,last$first, alternative = "less")
+t.test(last$first, mu = mean(first$first), alternative = "less")
+
+wilcox.test(first$first,last$first, alternative = "two.sided")
+t.test(last$first, mu = mean(first$first), alternative = "less")
+
+
+, mu = 4.34, "less")
+
+cbind(first$first, last$first) %>%
+  as.data.frame() %>% 
+  mutate(site = c(1:length(last$first))) %>% 
+  pivot_longer(c(V1:V2), names_to = "first_last", values_to = "CPUE") %>%
+  ggplot(aes(x = first_last, y = CPUE)) + 
+  geom_boxplot()
