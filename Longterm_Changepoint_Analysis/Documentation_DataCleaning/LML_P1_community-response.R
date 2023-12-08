@@ -37,54 +37,44 @@ BEF_data_unfiltered =left_join(fish, sample, by = "YSAMP_N") %>%
   left_join(shoreline_length, by = "SITE_N") %>%
   separate(SITE_N,  into = c("GEAR", "WATER","SITE")) %>%
   filter(WATER == "LML" & GEAR == "BEF"& GEAR_CODE == "NAF" & YEAR < 2020 & MONTH %in% c(5,6))
-#unfilt_saved = BEF_data_unfiltered
-%>% 
-  filter(SITE %nin% c("001", "017","018","024","025","026","027"))
 
 ## Fixing site issues 
 
 
 ###bef_unfiltered_saved = BEF_data_unfiltered
-BEF_data_unfiltered %>% filter(YEAR == 1998) %>% select(SITE) %>% unique()
-site_bin = c(1,4,5,9,13,16,18, 21, 23,27,31)
-cat = c(1:16)
-cat %>% as.data.frame() %>% mutate(cat.bin = .bincode(cat, site_bin)) 
+#BEF_data_unfiltered = bef_unfiltered_saved
+
+site_bin = c(1,4,5,9,13,16,18, 21, 23,27,31) ## for the simulations
+
 post_2002 = BEF_data_unfiltered %>% filter(YEAR == 2005) %>% select(SITE) %>% unique() %>% mutate(SITE_num = parse_number(SITE)) %>% 
-  mutate(site_bin = .bincode(SITE_num, site_bin))
-post_2002[which(post_2002$SITE == "032"),3] = 7
-post_2002 = post_2002 %>% filter(SITE_num %nin% c(1,17,18,24,25,26,27)) %>%## dataframe to join
-  mutate(YEAR = 1)
+  mutate(site_bin = .bincode(SITE_num, site_bin)) ## Create matrices for each cluster of years that were sampled in one way or another
+
 
 BEF_1998 = BEF_data_unfiltered %>%
   filter(YEAR == 1998) %>% 
-  select(SITE) %>% unique() %>% mutate(site_bin = c(1,1,1,1,2,3,3,3,4,4,5,7,8,11,10,10,4,5)) %>% 
-  #filter(site_bin != 11)
-  mutate(SITE_num = c(1:18)) %>% 
-  mutate(YEAR = 1998)
-
+  select(SITE) %>% unique() %>% 
+  mutate(site_bin = c(1,1,1,1,2,3,3,3,4,4,5,7,8,11,10,10,4,5)) %>% 
+  mutate(SITE_num = c(1:18)) 
+  
+  
 bef_1999 = BEF_data_unfiltered %>%
   filter(YEAR == 1999) %>% 
   select(SITE) %>% unique() %>% 
   filter(SITE !="NA") %>% 
-  mutate(site_bin = SITE) %>% 
-  mutate(SITE_num = c(1:8)) %>% 
-  mutate(YEAR = 1999)
+  mutate(site_bin = c(2,3,4,1,5,7,8, 10)) %>% 
+  mutate(SITE_num = c(1:8))
 
 site_matrix = rbind(bef_1999, BEF_1998, post_2002) %>% as.data.frame()
-#BEF_data_unfiltered = bef_unfiltered_saved
+
 
 BEF_data_unfiltered = left_join(BEF_data_unfiltered, site_matrix) %>% ## Make sure to use this BEF_data_unfiltered for final graphs
   mutate(SITE_cat = case_when(YEAR %nin% c(1998, 1999) ~ parse_number(SITE), YEAR %in% c(1998, 1999) ~ as.numeric(SITE_num))) %>%
   select(-SITE) %>% 
-  rename(SITE = SITE_cat) %>% 
+  rename(SITE = SITE_cat)
   filter(SITE != "NA")
-# no site 1,17,18, 24-27
 
-## bootstrapping 1999...
 
-BEF_data_unfiltered_all = BEF_data_unfiltered %>% filter(YEAR != 1999)
 
-BEF_data_unfiltered_1999 = BEF_data_unfiltered %>% filter(YEAR == 1999)
 
 # Removing rare + stocked taxa ------------ 
 
@@ -157,37 +147,6 @@ v = CPUE.w.sec %>%
   mutate(value = value * 60 * 60 )
 
 
-#v_all = v
-#CPUE.w.sec_all = CPUE.w.sec
-
-#v_1999 = v
-#CPUE.w.sec_1999 = CPUE.w.sec
-CPUE.w.sec_1999 = CPUE.w.sec_1999 %>% mutate(CC = 0) %>% mutate(LT = 0) %>% 
-  mutate(MM = 0) %>% mutate(RS = 0) %>% mutate(RWF = 0) %>% mutate(SS = 0) %>% 
-  select(BB, CC, CS, LT, MM, PS, RS, RWF, SMB, SS, ST, WS)
-
-## Resampled --- 
-name_frame = data.frame(YEAR = rep(1999, 23), IT = c(1:23)) %>% unite(YEAR_IT)
-resamp = data.frame(SITE = name_frame$YEAR_IT,
-           BB = abs(rnorm(23, mean = mean(CPUE.w.sec_1999$BB), sd = sd(CPUE.w.sec_1999$BB))),
-           CC = rep(0,23),
-           
-    
-           
-            
-           CS = abs(rnorm(23, mean = mean(CPUE.w.sec_1999$CS), sd = sd(CPUE.w.sec_1999$CS))),
-           LT = rep(0,23), 
-           MM = rep(0,23),
-           PS = abs(rnorm(23, mean = mean(CPUE.w.sec_1999$PS), sd = sd(CPUE.w.sec_1999$PS))),
-           RS = rep(0,23),
-           RWF = rep(0,23),
-           SMB = abs(rnorm(23, mean = mean(CPUE.w.sec_1999$SMB), sd = sd(CPUE.w.sec_1999$SMB))),
-           SS = rep(0,23),
-           ST = abs(rnorm(23, mean = mean(CPUE.w.sec_1999$ST), sd = sd(CPUE.w.sec_1999$ST))),
-           WS = abs(rnorm(23, mean = mean(CPUE.w.sec_1999$WS), sd = sd(CPUE.w.sec_1999$WS)))) %>% 
-  column_to_rownames(var = "SITE")
-
-bef_1999 = rbind(CPUE.w.sec_1999, resamp)
 
 
 
@@ -204,13 +163,12 @@ for(i in 1:length(codes$species)){
                 names_from = ID) %>% 
     arrange(Year) %>% 
     mutate(Year = as.numeric(Year)) %>%
-    #mutate(`014_WS` = case_when(Year %in% c(2000, 2001) ~ 20))
-    #mutate_at(c("014_WS", "013_WS"), . = case_when(Year ==2000 ~ function(x) replace(x, is.na(x), 0)))
+
     replace(is.na(.), 0) %>%
     dplyr::select(-Year) %>%
     as.matrix()
   
-  x[1,19:32] = "NA"
+  x[1,19:32] = "NA" #add back in when not doing simulation
   x[2,9:32] = "NA"
   
   rownames(x) = c(1998:2019) # Sequence of years 
