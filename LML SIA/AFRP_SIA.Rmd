@@ -1,0 +1,868 @@
+---
+title: "Untitled"
+author: "Montana"
+date: "4/19/2021"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_knit$set(root.dir = "C:/Users/monta/OneDrive - Airey Family/GitHub/LML_SMB_removal/")
+```
+
+```{r, message = F}
+library(tidyr)
+library(dplyr)
+library(ggplot2)
+library(stringr)
+```
+
+```{r}
+
+`%nin%` = Negate(`%in%`)
+
+## Load in AFRP Database and collect baselines
+sample = read.csv("Data/SI_SAMPLE.csv")
+
+measurement = read.csv("Data/SI_MEASUREMENT.csv")
+
+
+#Set up data ------------
+data = left_join(measurement, sample) %>% 
+  filter(is.na(D15N)==F & 
+           is.na(D13C) == F & 
+           WATER %in% c("LML")) 
+
+no_date = read.csv("Data/JML.Data.Master.csv") %>%
+  filter(Species %in% c("SMB", "LT"), Date == "") %>%
+  separate(FISH_N, into = c("species","water","YEAR","gear","dsamp")) %>%
+  mutate(YEAR = as.Date(YEAR, format = "%m%d%y")) %>%
+  separate(YEAR, into = c("YEAR", "MONTH", "DAY")) %>% 
+  select(water, YEAR, MONTH,  species, C, N) %>%
+  rename(TAXON = species, D13C = C, D15N = N, WATER = water) %>%
+  mutate(GROUP = "FISH") %>% 
+  select(WATER, YEAR, TAXON, GROUP, D13C, D15N) 
+
+date = read.csv("Data/JML.Data.Master.csv") %>%  
+  mutate(WATER = "LML") %>%
+  filter(Species %in% c("SMB", "LT"), Date != "") %>%
+  separate(Date, into = c("MONTH","DAY","YEAR")) %>% 
+  select(WATER, YEAR, MONTH, Species, C, N) %>%
+  rename(TAXON = Species, D13C = C, D15N = N) %>% 
+  mutate(GROUP = "FISH") %>%
+  select(WATER, YEAR, TAXON, GROUP, D13C, D15N)
+
+JML_baselines = read.csv("Data/JML.Data.Master.csv") %>%
+  filter(Species %in% c("Snails", "Periphyton", "ZOOP")) %>%
+  separate(Date, into = c("MONTH","DAY","YEAR"))%>%  
+  mutate(WATER = "LML")  %>%
+  rename(TAXON = Species, D13C = C, D15N = N, GROUP = Group)  %>%
+  mutate(GROUP = case_when(TAXON == "Periphyton" ~ "algae", TAXON == "Snails" ~ "SNAIL")) %>% 
+  select(WATER, YEAR, TAXON, GROUP, D13C, D15N)
+
+full = data %>% select(WATER, YEAR, TAXON, GROUP, D13C, D15N) %>%
+  rbind(date) %>%
+  rbind(no_date) %>%
+  filter(TAXON != "" | GROUP == "ZOOP") 
+
+full %>%
+  filter(TAXON == "SMB") %>%
+  ggplot(aes(x = YEAR, y = as.numeric(D15N))) + geom_point()
+```
+
+## Length + isotope data combined 
+
+
+```{r}
+
+colnames(LML_recent)
+colnames(length_trends)
+length_trends_join = length_trends %>%
+  rename(TAXON = Species, 
+         GROUP = Group, 
+         D15N = N, 
+         D13C = C, 
+         LENGTH = mean_length) %>%
+  ungroup() %>%
+  select(TAXON, GROUP, D15N, D13C, LENGTH) %>%
+  mutate(period = "early")
+
+
+age_iso = LML_recent %>% select(TAXON, GROUP, D15N, D13C, LENGTH) %>%
+  mutate(period = "late") %>%
+  rbind(length_trends_join) %>%
+  mutate(age = case_when(LENGTH < 100 ~ "juv", LENGTH > 100 ~ "adult")) %>%
+  group_by(period, TAXON, age) %>%
+  mutate(total = n()) %>%
+  filter(total > 4) %>%
+  ungroup() %>%
+  unite("ID", c(TAXON, age)) %>%
+  # join species and age to make an ID
+  mutate(ID_new = as.numeric(as.factor(ID)))
+
+age_legend = age_iso %>%
+  ungroup()  %>%
+  select(ID, ID_new) %>%
+  unique()
+
+sia_age_siber = age_iso %>%
+  select(ID_new, D15N, D13C, period) %>%
+  rename(group = ID_new, 
+         community = period, 
+         iso1 = D13C, 
+         iso2 = D15N) %>%
+  select(iso1, iso2, group, community) %>%
+  mutate(community = as.numeric(as.factor(community)))
+
+
+
+
+```
+
+
+
+## Species size information -----------------------------------------------
+
+```{r}
+LML_recent = measurement %>% rename(FISH_N = ISO_FISH_N) %>% filter(FISH_N != "") %>%
+  left_join((read.csv("Data/FISH_MEASUREMENT_LML.csv") %>%
+  filter(FISH_N %in% measurement$ISO_FISH_N, FISH_N != ""))) %>%
+  left_join(sample, by = "ISO_YSAMP_N") %>%
+  filter(WATER == "LML", 
+         SAMPLE_TYPE == "TISSUE")
+
+LML_recent %>% 
+  ggplot(aes(x = log(LENGTH), y = D13C, col = TAXON)) +
+  geom_point() + 
+  geom_smooth(method = "lm", se = F) + 
+  theme_minimal()
+
+
+LML_recent %>% 
+  ggplot(aes(x = log(LENGTH), y = D15N, col = TAXON)) +
+  geom_point() + 
+  geom_smooth(method = "lm", se = F) + 
+  theme_minimal()
+## Early trends in d13C and d15N
+length_trends = read.csv("Data/JML.Data.Master.csv") %>% filter(Length != "") %>%
+  separate(Length, into = c("a","b","c","d","e","f","g","h","i")) %>%
+  pivot_longer(a:i, names_to = "individual", values_to = "Length") %>%
+  select(Species, Group, Date, C, N, Length) %>%
+  na.omit() %>% 
+  group_by(Species, Group, Date, C, N) %>%
+  summarize(mean_length = mean(as.numeric(Length))) 
+
+length_trends %>%
+  ggplot(aes(x = log(mean_length), y = as.numeric(C), col = Species)) + 
+  geom_point() + 
+  geom_smooth(method = "lm", se = F) + 
+  theme_minimal() +
+  ylab("d13C Early") +
+  xlim(3,6.5)
+length_trends %>%
+  ggplot(aes(x = log(mean_length), y = as.numeric(N), col = Species)) + 
+  geom_point() + 
+  geom_smooth(method = "lm", se = F) + 
+  theme_minimal() +
+  ylab("d15N Early") +
+  xlim(3,6.5)
+
+
+## Combined 
+a = LML_recent %>% select(TAXON, LENGTH) %>% mutate(period = "late")
+
+length_trends %>% ungroup() %>% select(Species, mean_length) %>%
+  filter(Species %nin% c("CR","mussel")) %>%
+  rename(TAXON = Species, LENGTH = mean_length) %>% 
+  mutate(period = "early") %>% rbind(a) %>%
+  ggplot(aes(x = TAXON, y = log(LENGTH), fill = period)) + 
+  geom_boxplot() + 
+  theme_minimal()
+
+```
+
+
+
+## Baseline Data Tables ------------------------------------------------------
+
+```{r}
+
+## All potential baseline items
+baselines = full %>% filter(GROUP %nin% c("FISH", "CRAYFISH")) %>% rbind(JML_baselines) %>%
+  mutate(D13C = as.numeric(D13C),
+         D15N = as.numeric(D15N)) %>%
+  mutate(community = case_when(YEAR < 2005 ~ "early", 
+                            YEAR > 2019 ~ "late"))
+## Snails only
+snail = baselines %>% filter(GROUP %in%  c("SNAIL")) %>%
+  group_by(GROUP, community) %>%
+  summarize(mean_d13C = mean(D13C), mean_d15N = mean(D15N), sd_C = sd(D13C), sd_N = sd(D15N))
+## Mayflies only
+insect = baselines %>% filter(GROUP %in% c("INSECT"), TAXON %in% c("HEPTAGENIIDAE","EPHEMEROPTERA")) %>%
+  group_by(GROUP, community) %>% 
+  summarize(mean_d13C = mean(D13C), mean_d15N = mean(D15N), sd_C = sd(D13C), sd_N = sd(D15N))
+## Zooplankton only
+zoop = baselines %>% filter(GROUP == "ZOOP")  %>%
+  group_by(GROUP, community) %>%
+  summarize(mean_d13C = mean(D13C), mean_d15N = mean(D15N), sd_C = sd(D13C), sd_N = sd(D15N))
+
+
+## bind together all three potential baselines
+baselines = rbind(snail, insect, zoop) %>%
+   na.omit()
+## Create zooplankton data for late period (waiting to run this)
+fake_late.zoop = data.frame(GROUP = "ZOOP", community = "late", mean_d13C = baselines$mean_d13C[5], mean_d15N = (baselines$mean_d15N[5] - 2.001345),
+                            sd_C = baselines$sd_C[5], sd_N = baselines$sd_N[5])
+# Join real and fake data together
+baselines = baselines %>% rbind(fake_late.zoop) %>%
+  ungroup() %>%
+  mutate(S_N = c("benthic", "benthic", "benthic", "benthic", "pelagic", "pelagic"))
+
+
+# Creating the baselines that go into SIMMR
+baseline_simmr = baselines %>% filter(GROUP %in% c("INSECT", "ZOOP"))
+# Creating the data table that goes into SIMMR
+data_simmr = full %>% filter(GROUP == "FISH") %>%
+  mutate(community = case_when(YEAR < 2005 ~ "early", 
+                            YEAR > 2019 ~ "late")) %>% 
+  na.omit() %>% 
+  select(TAXON, community, D13C, D15N) %>%
+  mutate(D13C = as.numeric(D13C), D15N = as.numeric(D15N)) %>%
+  unique()
+
+```
+
+## Trophic position analysis 
+
+
+
+
+
+
+## SIMMR ----------------------
+```{r}
+library(simmr)
+CI_list = list()
+for(i in 1:length(data_simmr$community %>% unique())){
+  
+  data_s = data_simmr %>% filter(community == (data_simmr$community %>% unique())[i]) %>% ungroup() %>% as.data.frame()
+  
+  baseline_s = baseline_simmr %>% filter(community == (data_simmr$community %>% unique())[i]) %>% ungroup() %>% as.data.frame()
+  
+  S_N = c("Benthic", "Pelagic")
+  
+
+  simmr = simmr_load(
+    mixtures = data_s[,3:4] %>% as.matrix(),
+    source_names = S_N,
+    source_means = baseline_s[,3:4],
+    source_sds = baseline_s[,5:6], 
+    group = data_s[,1]
+  )
+  
+  title_graph = ggplot() + ggtitle(paste(i))
+  
+  print(title_graph)
+  plot(simmr)
+  
+  
+  simmr_out <- simmr_mcmc(simmr)
+  #summary(simmr_out,
+         # type = "diagnostics",
+         # group = 1
+ # )
+  #posterior_predictive(simmr_out, group = 1)
+  
+  #prior_viz(simmr_out)
+  #plot(simmr_out, type = "histogram")
+  
+  compare_groups(simmr_out,
+                 groups = 1:length(unique((data_s$TAXON))),
+  
+                                source_name = "Benthic")
+  
+  
+  
+  CI_list[[i]] = summary(simmr_out, 
+         group = 1:length(unique(data_s$TAXON)), 
+         type = "quantiles")
+
+  
+}
+
+data_simmr %>% group_by(community, TAXON) %>%
+  summarize(n  = n()) %>%
+  pivot_wider(names_from = community, values_from = n) %>%
+  write.csv(., file = "taxa_summary.csv")
+
+
+
+
+
+```
+```{r}
+# Community 1 simmr data
+community1<- do.call(rbind, CI_list[[1]]$quantiles) %>% as.data.frame() %>%
+  mutate(ID = rep(names(CI_list[[1]]$quantiles), each = 5)) %>%
+  mutate(community = 1)
+# Community 2 simmr data
+community2<- do.call(rbind, CI_list[[2]]$quantiles) %>% as.data.frame() %>%
+  mutate(ID = rep(names(CI_list[[2]]$quantiles), each = 5)) %>%
+  mutate(community = 2)
+
+## Modify simmr resutls into table so we can index for trophic position
+simmr_results = rbind(community1, community2) %>%
+  rownames_to_column(var = "rowname") %>%
+  mutate(rowname = gsub("[0-9]", "", rowname))%>%
+  mutate(rowname = gsub("\\.", "", rowname)) %>%
+  filter(rowname == "Benthic") %>%
+  select(-`25%`, -`75%`) %>%
+  mutate(community= case_when(community == 1 ~ "early", community == 2 ~ "late")) %>%
+  rename(group = ID)
+  
+
+## Create look-up table to join the appropiate group#s to each taxon
+join_names = data_simmr %>% select(TAXON, community) %>% unique() %>%
+  arrange(community, TAXON) %>%
+  group_by(community) %>%
+  mutate(group = paste("group_", 1:length(TAXON), sep = "")) 
+
+
+  
+tp =  data_simmr %>% left_join(join_names) %>%
+  left_join(simmr_results, by = c("community", "group")) %>%
+  mutate(TP = 2 + ((D15N - (baseline_simmr %>% filter(GROUP == "INSECT" & community == community))$mean_d15N)*`50%` + 
+                     (D15N - (baseline_simmr %>% filter(GROUP == "ZOOP" & community == community))$mean_d15N)*(1-`50%`)) / 3.4)
+
+
+tp %>% ggplot(aes(x = TAXON, y = TP, fill = community)) +
+  geom_boxplot() + theme_minimal() + ylab("Trophic Position")
+
+```
+
+
+
+## SIBER ----------------------------------
+
+```{r}
+#----------------------------- Params ---------------------------------------- 
+
+x.p = seq(-38,-20,length.out=100); 
+y.p = seq(0,9, length.out = 100) 
+parms <- list();
+parms$n.iter=2*10^4; 
+parms$n.burnin=1*10^3; 
+parms$n.thin=10
+parms$n.chains=3     
+priors=list();
+priors$R=1*diag(2);
+priors$k=2; 
+priors$tau.mu=1.0E-3 # Vague priors 
+Nsamples=1000
+n.posts <- 1000;
+p.ell <- 0.90 # How much data to include? Standard ellipses --> p.ell = .9
+n.points = 1000
+```
+
+```{r}
+library(SIBER)
+source("Function_Source_Files/isotope_functions_update.R")
+## Must have legend
+
+legend = data_simmr %>% mutate(group = as.numeric(as.factor(TAXON)), 
+                                   community = as.numeric(as.factor(community))) %>%
+  arrange(community, group) %>%
+  select(TAXON, group) %>%
+  unique() %>%
+  rename(CODE = TAXON) %>%
+  mutate(color = "black") %>%
+  mutate(common = "n")
+
+data_siber = data_simmr %>% mutate(group = as.numeric(as.factor(TAXON)), community = as.numeric(as.factor(community))) %>%
+  rename(iso1 = D13C, iso2 = D15N) %>% 
+  group_by(community, group) %>%
+  mutate(total = n()) %>%
+  filter(total > 3) %>%
+  arrange(community, group) %>%
+  select(iso1, iso2,group, community) 
+
+siber.example <- createSiberObject(as.data.frame(data_siber)) ## Creates data object 
+posterior <- siberMVN(siber.example, parms, priors) ## Generates posterior distributions 
+
+
+overlap_list = list() 
+
+
+
+for(h in 1:length(unique(data_siber$community))){
+  
+  overlap_list[[h]] = overlap(data_siber,h,30, posterior) %>% as.data.frame()
+}
+
+# Code to reduce list to matrix 
+overlap_data = Reduce(full_join, overlap_list) %>%
+  select('SppPair', everything())
+
+
+
+overlap.long = overlap_data %>% 
+  pivot_longer(2:length(.[1,]),
+               names_to = "Community", 
+               values_to = "Values") %>% 
+  na.omit() %>%
+  rename("Species_Pair" = `SppPair`) %>% 
+  separate(Community, into = c("c", "Community", "post")) %>%
+  select(-c) %>%
+  mutate(Values = as.numeric(Values)) 
+
+
+
+
+
+#library(tidyr)
+#library(tidyverse)
+
+
+## table 
+
+df = overlap.long%>% ungroup() 
+df$group1 = sapply(strsplit(df$Species_Pair, "v"), function(x) min(x))
+df$group2 <- sapply(strsplit(df$Species_Pair, "v"), function(x) max(x))
+df = df %>%
+  mutate(group1 = parse_character(group1), group2 = parse_character(group2))
+df$sorted_comparison <- apply(df[, c("group1", "group2")], 1, function(x) paste(sort(x), collapse = "_"))
+
+
+df.long = df %>% 
+  select(sorted_comparison, everything(), 
+         -Species_Pair, -group1, -group2) %>%
+  unique()
+
+
+dec.comp = df.long %>% select(sorted_comparison, Community) %>% unique() %>% group_by(sorted_comparison) %>%
+  summarize(count = n()) %>%
+  filter(count > 1)
+
+df.long %>% 
+  filter(!grepl("SMB", sorted_comparison)) %>%
+  mutate(period = case_when(Community == 1 ~ "early", Community == 2 ~ "late")) %>%
+  filter(sorted_comparison %in% dec.comp$sorted_comparison) %>%
+  ggplot(aes(x = period, y = Values, fill = period)) + 
+  geom_boxplot() + facet_wrap(~sorted_comparison, scales = "free") + 
+  theme_minimal() + 
+  ylab("Pairwise Overlap")
+
+
+df.long %>% filter(!grepl("SMB", sorted_comparison)) %>%
+  mutate(period = case_when(Community == 1 ~ "early", Community == 2 ~ "late")) %>%
+  group_by(Community, post, period) %>%
+  summarize(mean_value = mean(Values)) %>%
+  ggplot(aes(x = period, y = mean_value, fill = period)) + 
+  geom_boxplot() + 
+  theme_minimal() + 
+  ylab("Average Pairwise Overlap")
+
+
+overlap_test = (df.long %>%
+                  filter(!grepl("SMB", sorted_comparison)) %>%
+  mutate(period = case_when(Community == 1 ~ "early", Community == 2 ~ "late")) %>%
+  group_by(Community, post, period) %>%
+  summarize(mean_value = mean(Values)) %>%
+  ungroup() %>%
+  select(-Community) %>%
+  pivot_wider(names_from = period, values_from = mean_value) %>%
+  mutate(diff = early - late) %>%
+  ungroup() )$diff %>% as.numeric() 
+
+quantiles_95(overlap_test)[c(1,3,5)]
+
+```
+
+```{r}
+
+df.long %>%
+  mutate(period = case_when(Community == 1 ~ "early", Community == 2 ~ "late")) %>%
+  filter(sorted_comparison %nin% dec.comp$sorted_comparison) %>%
+  ggplot(aes(x = sorted_comparison, y = as.numeric(Values), fill = period)) + 
+  geom_boxplot() + facet_wrap(~period, scales = "free_x") + 
+  theme_minimal() + 
+  ylab("Pairwise Overlap") + 
+  theme(axis.text.x = element_text(angle= 90, vjust = .5))
+
+
+df.long %>%
+  mutate(period = case_when(Community == 1 ~ "early", Community == 2 ~ "late")) %>%
+  group_by(sorted_comparison, period) %>%
+  summarize(mean = mean(Values)) %>%
+  filter(sorted_comparison %nin% dec.comp$sorted_comparison) %>%
+  separate(sorted_comparison, into = c("S1","S2")) %>%
+  ggplot(aes(x = S1, y = S2, col = mean, shape = period)) + 
+  geom_point(size = 5) +
+  scale_color_viridis() + theme_bw() + 
+  ylab("") + xlab("")
+
+library(viridis)
+```
+
+
+
+```{r}
+library(SIBER)
+
+## Ellipse area just use full posterior with full length of species/ellipses  
+ellipse.area = siberEllipses(posterior) %>% 
+  as.data.frame() %>%
+  rename_with(~ names(posterior)) %>% 
+  mutate(post_n = seq(1:length(.[,1]))) %>%
+  pivot_longer(1:length(posterior), 
+               names_to = "comm",
+               values_to = "area") %>%
+  separate(comm, into = c("community", "group")) %>%
+  
+  group_by(post_n, community) %>%
+  mutate(total_area = sum(area)) %>%
+  mutate(relative_area = area / total_area) %>% 
+  group_by(community, group) 
+
+
+ellipse.area %>% ggplot(aes(x = group, y = area, fill = community)) + 
+  geom_boxplot()
+
+
+
+
+
+# Function to calculate boxplot percentiles
+## 95% credible interval funciton
+quantiles_95 <- function(x) {
+  r <- quantile(x, probs=c(0.025, 0.25, 0.5, 0.75, 0.975))
+  names(r) <- c("ymin", "lower", "middle", "upper", "ymax")
+  r
+}
+
+med_area = ellipse.area %>% 
+  filter(relative_area >= quantile(relative_area, probs = 0.025) & 
+         relative_area <= quantile(relative_area, probs = 0.975)) %>% 
+  ungroup() %>%
+  group_by(group, post_n, community) %>% 
+  #summarize(med_area = mean(relative_area)) %>%
+  summarize(med_area = mean(area)) %>%
+  mutate(group = as.numeric(group)) %>%
+  left_join(legend) %>%
+  mutate(CODE = str_replace(CODE, "NPD", "PD")) %>% 
+  mutate(CODE = str_replace(CODE, "BNM", "BM")) %>%
+  mutate(period = case_when(community == 1 ~ "early", 
+                            community == 2 ~ "late"))
+
+
+
+med_area %>%
+  rename(Species = CODE) %>%
+  ggplot(aes(x = log10(med_area+1), y = Species, fill = community)) + 
+  stat_summary(fun.data=quantiles_95, geom="boxplot", aes(width=0.4)) +
+  #geom_boxplot()+
+  theme_minimal() + 
+  xlab("log10(Niche Area)") +
+  labs(y = NULL)
+
+
+
+med_area %>%
+  #filter(!grepl("SMB", CODE)) %>%
+  ## Filter for comparisons in both early and late
+  filter(CODE %in% c("PS", "MM","CS","CC")) %>%
+  group_by(community,period, post_n) %>%
+  summarize(mean_area = mean(med_area)) %>%
+
+  ggplot(aes(y = (mean_area), x = period, fill = period)) + 
+  stat_summary(fun.data=quantiles_95, geom="boxplot", aes(width=0.4)) +
+  #geom_boxplot()+
+  theme_minimal(base_size = 14) + 
+  xlab("Niche Area") +
+  labs(y = NULL)
+
+diff_area = med_area %>%
+  filter(CODE %in% c("PS", "MM","CS","CC")) %>%
+  group_by(community, period, post_n) %>%
+  summarize(sum_area = sum(med_area)) %>%
+  ungroup() %>%
+  select(-community) %>%
+  pivot_wider(names_from = period, values_from = sum_area) %>%
+  mutate(difference =  late - early) %>%
+  na.omit()
+diff_area
+quantiles_95(diff_area$difference)
+
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+```{r}
+area_compare = ellipse.area %>%
+  group_by(community,group, post_n) %>% 
+  summarize(med_area = mean(area)) %>%
+  mutate(group = as.numeric(group))
+
+area_cred =  ellipse.area %>%
+  group_by(group, community) %>%
+  summarize(lower = quantiles_95(area)[1], upper = quantiles_95(area)[5], mean = mean(area)) %>%
+  mutate(lower  = round(lower, digits = 2), upper = round(upper, digits = 2), mean = round(mean, digits = 2)) %>%
+  unite("CI",c(lower, upper),   sep = ", ") %>% 
+  mutate(group = as.numeric(group)) %>%
+  arrange(group) %>% left_join(legend) %>%
+  mutate(mean = paste(mean, " (", CI, ")", sep = "")) %>%
+  mutate(SpeciesA = CODE,
+         SpeciesB = CODE) %>%
+  mutate(community1 = as.numeric(community),
+         community2 = as.numeric(community))
+
+
+fill.list = list()
+fill.list2 = list()
+
+fill.frame = matrix(NA, 1100,7)
+
+
+colnames(fill.frame) = c("community1", "community2","groupA", "groupB", "mean","lower", "upper")
+
+
+
+for(a in 1:2){
+  for(b in 1:2){
+    for(i in 1:length(unique(med_area$group))){
+      g = sort(unique(med_area$group))[i]
+      for(h in 1:length(unique(med_area$group))){
+      c =  sort(unique(med_area$group))[h]
+      
+      
+      
+      string =  (area_compare %>% filter(group == g, community == a))$med_area - (area_compare %>% filter(group == c, community == b))$med_area
+      sum.dat = c(a,b,g, c, mean(string), quantiles_95(string)[c(1,5)])
+      
+      fill.frame[h, ] = sum.dat
+      
+      
+      }
+      fill.frame = fill.frame %>% as.data.frame() %>% na.omit() 
+      fill.list[[i]] = fill.frame
+      
+      
+      
+      
+    }
+    
+        if (a == 1 & b == 1) {
+      fill.list2[[1]] = fill.list
+    } else if (a == 1 & b == 2) {
+      fill.list2[[2]] = fill.list
+    } else if (a == 2 & b == 2) {
+      fill.list2[[3]] = fill.list
+    }
+        
+    
+  }
+
+}
+
+relative_sigs = rbind(Reduce(full_join, fill.list2[[1]]),
+                      Reduce(full_join, fill.list2[[2]]),
+                      Reduce(full_join, fill.list2[[3]])) %>%
+  mutate(sign = sign(lower) == sign(upper)) %>%
+  filter(sign == TRUE) %>%
+  filter(mean != 0 & upper !=0 & lower != 0)
+
+relative_sigs
+
+## Statistical differences between niche areas
+df <- relative_sigs %>% unite("comparison",groupA, groupB) ## new dataframe
+# Split each comparison into its constituent groups
+df$group1 <- sapply(strsplit(df$comparison, "_"), function(x) min(x))
+df$group2 <- sapply(strsplit(df$comparison, "_"), function(x) max(x))
+# Sort the groups alphabetically
+df$sorted_comparison <- apply(df[, c("group1", "group2")], 1, function(x) paste(sort(x), collapse = "_"))
+relative_sigs = df %>% 
+  select(sorted_comparison, everything(), -comparison) %>%
+  separate(sorted_comparison, into = c("groupA","groupB"), sep = "_") %>%
+  distinct(groupA, groupB, .keep_all = T) %>%
+  select(-group1, -group2, -sign)
+
+med_join = med_area %>% group_by(group) %>%
+  summarize(mean_med = mean(med_area,na.rm = T))%>% mutate(groupA = group, groupB = group)
+
+## info from legend to add codes into table
+legend_mod = legend %>% mutate(groupA = group, groupB = group)
+## Build table -------------------
+b = relative_sigs %>% mutate(groupA = as.numeric(groupA), groupB = as.numeric(groupB)) %>% 
+  left_join(legend_mod %>% select(-groupB)) %>%
+  rename(codeA = CODE) %>%
+  left_join(legend_mod %>% select(-groupA), by = "groupB") %>%
+  rename(codeB = CODE) %>%
+  select(community1, community2,codeA, codeB, mean, lower, upper, groupA, groupB) %>%
+  left_join(med_join %>% select(-groupB), by = "groupA") %>%
+  rename("AreaA" = mean_med) %>%
+  left_join(med_join, by = "groupB") %>%
+  rename("AreaB" = mean_med) %>%
+  select(community1, community2, codeA, AreaA, codeB, AreaB, mean, lower, upper)  %>% 
+  arrange(codeA) %>%
+  rename("SpeciesB" = codeB) %>%
+  rename("SpeciesA" = codeA) %>%
+  mutate(AreaA = round(AreaA, digits = 2), 
+         AreaB = round(AreaB, digits = 2), 
+         lower = round(lower, digits = 2),
+         upper = round(upper, digits = 2),
+         mean = round(mean, digits = 2))
+
+## Below doesn't work because I have to fix the multiple join issues with the differing communities
+b = b %>% left_join(area_cred %>% select(-SpeciesB, -community2), by = c("SpeciesA","community1")) %>%
+  rename(mean_dif = mean.x, meanA = mean.y) %>%
+  left_join(area_cred %>% select(-SpeciesA, -community1), by = c("SpeciesB", "community2")) %>%
+  rename(meanB = mean) %>%
+  select(community1, SpeciesA, meanA, community2, SpeciesB, meanB, mean_dif, lower, upper) %>%
+  mutate(mean_dify = paste( abs(mean_dif), " (",abs(lower), ", ",abs(upper), ")", sep = "")) %>%
+  select(-mean_dif, -lower, -upper) %>% na.omit()
+
+b %>% arrange(community1, community2) %>% write.csv(., "niche_area.csv")
+```
+
+
+
+
+## Modern comparisons in overlap ------------------------------
+
+```{r}
+sia_age_siber
+age_legend
+```
+
+```{r}
+legend = age_legend %>%
+  rename(group = ID_new,
+         CODE = ID) %>%
+  mutate(color = group, 
+         common = "n")
+
+sia_age_siber = sia_age_siber %>%
+  mutate(iso1 = as.numeric(iso1), 
+         iso2 = as.numeric(iso2))
+
+siber.example <- createSiberObject(as.data.frame(sia_age_siber)) ## Creates data object 
+posterior <- siberMVN(siber.example, parms, priors) ## Generates posterior distributions 
+
+
+overlap_list = list() 
+
+
+
+for(h in 1:length(unique(sia_age_siber$community))){
+  
+  overlap_list[[h]] = overlap(sia_age_siber,h,30, posterior) %>% as.data.frame()
+}
+
+# Code to reduce list to matrix 
+overlap_data = Reduce(full_join, overlap_list) %>%
+  select('SppPair', everything())
+
+
+
+overlap.long = overlap_data %>% 
+  pivot_longer(2:length(.[1,]),
+               names_to = "Community", 
+               values_to = "Values") %>% 
+  na.omit() %>%
+  rename("Species_Pair" = `SppPair`) %>% 
+  separate(Community, into = c("c", "Community", "post")) %>%
+  select(-c) %>%
+  mutate(Values = as.numeric(Values)) 
+
+
+
+
+## table 
+
+df = overlap.long%>% ungroup() 
+df$group1 = sapply(strsplit(df$Species_Pair, "v"), function(x) min(x))
+df$group2 <- sapply(strsplit(df$Species_Pair, "v"), function(x) max(x))
+df = df %>%
+  mutate(group1 = parse_character(group1), group2 = parse_character(group2))
+df$sorted_comparison <- apply(df[, c("group1", "group2")], 1, function(x) paste(sort(x), collapse = "_"))
+
+
+df.long = df %>% 
+  select(sorted_comparison, everything(), 
+         -Species_Pair, -group1, -group2) %>%
+  unique()
+
+
+dec.comp = df.long %>% select(sorted_comparison, Community) %>% unique() %>% group_by(sorted_comparison) %>%
+  summarize(count = n()) %>%
+  filter(count > 1)
+
+df.long %>% 
+  filter(!grepl("SMB", sorted_comparison)) %>%
+  mutate(period = case_when(Community == 1 ~ "early", Community == 2 ~ "late")) %>%
+  filter(sorted_comparison %in% dec.comp$sorted_comparison) %>%
+  ggplot(aes(x = period, y = Values, fill = period)) + 
+  geom_boxplot() + facet_wrap(~sorted_comparison, scales = "free") + 
+  theme_minimal() + 
+  ylab("Pairwise Overlap")
+
+
+df.long %>% filter(!grepl("SMB", sorted_comparison)) %>%
+  mutate(period = case_when(Community == 1 ~ "early", Community == 2 ~ "late")) %>%
+  group_by(Community, post, period) %>%
+  summarize(mean_value = mean(Values)) %>%
+  ggplot(aes(x = period, y = mean_value, fill = period)) + 
+  geom_boxplot() + 
+  theme_minimal() + 
+  ylab("Average Pairwise Overlap")
+
+
+overlap_test = (df.long %>%
+                  filter(!grepl("SMB", sorted_comparison)) %>%
+  mutate(period = case_when(Community == 1 ~ "early", Community == 2 ~ "late")) %>%
+  group_by(Community, post, period) %>%
+  summarize(mean_value = mean(Values)) %>%
+  ungroup() %>%
+  select(-Community) %>%
+  pivot_wider(names_from = period, values_from = mean_value) %>%
+  mutate(diff = early - late) %>%
+  ungroup() )$diff %>% as.numeric() 
+
+quantiles_95(overlap_test)[c(1,3,5)]
+
+df.long %>%
+  mutate(period = case_when(Community == 1 ~ "early", Community == 2 ~ "late")) %>%
+  filter(sorted_comparison %nin% dec.comp$sorted_comparison) %>%
+  ggplot(aes(x = sorted_comparison, y = as.numeric(Values), fill = period)) + 
+  geom_boxplot() + facet_wrap(~period, scales = "free_x") + 
+  theme_minimal() + 
+  ylab("Pairwise Overlap") + 
+  theme(axis.text.x = element_text(angle= 90, vjust = .5))
+
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

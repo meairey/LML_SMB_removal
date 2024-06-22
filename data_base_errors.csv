@@ -1,0 +1,323 @@
+ISO_YSAMP_N,ISO_FISH_N,ITEM_N,ITEM_N_corrected,NUM,CATEGORY,CATEGORY_corrected,GROUP,GROUP_corrected,TAXON,TAXON_corrected,SAMPLE_TYPE,N2_AMP,PER_N,D15N,CO2_AMP,PER_C,D13C,SD_D13C_VPDB,H2_AMP,PER_H,D2H,CO2_AREA,D18O_VSMOW,SD_D18O_VSMOW,D18O_VPDB,SD_D18O_VPDB,COMMENT,Species_jml,Group_jml,Date_jml,FISH_N_jml,issue
+SIC.LML.2001.007,,A1,A1,,ALGA,ALGA,PHYTO,PHYTO,,,,,,,,,,,,,,,,,,,Added from 'JML ISOTOPE DATA',,,,,incomplete ratios
+SIC.LML.2002.007,,A10,A10,,ALGA,ALGA,PERI,PERI,,,,,,3.66,,,-19.91,,,,,,,,,,Added from 'JML ISOTOPE DATA',Periphyton,Basal,5/31/2002,,entry correct
+SIC.LML.2002.007,,A11,A11,,ALGA,ALGA,PHYTO,PHYTO,,,,,,,,,-28.7,,,,,,,,,,Added from 'JML ISOTOPE DATA',,,,,incomplete ratios
+SIC.LML.2002.016,,A12,A12,,ALGA,ALGA,PERI,PERI,,,,,,3.18,,,-22.12,,,,,,,,,,Added from 'JML ISOTOPE DATA',Periphyton,Basal,6/28/2002,,entry correct
+SIC.LML.2001.010,,A13,A13,,ALGA,ALGA,PHYTO,PHYTO,,,,,,,,,-18.21,,,,,,,,,,Added from 'JML ISOTOPE DATA',,,,,incomplete ratios
+SIC.LML.2000.005,,A14,A14,,ALGA,ALGA,PHYTO,PHYTO,,,,,,,,,-22.17,,,,,,,,,,Added from 'JML ISOTOPE DATA',,,,,incomplete ratios
+SIC.LML.2002.018,,A15,A15,,ALGA,ALGA,PERI,PERI,,,,,,3.33,,,-20.53,,,,,,,,,,Added from 'JML ISOTOPE DATA',Periphyton,Basal,7/17/2002,,entry correct
+SIC.LML.2000.003,,A16,A16,,ALGA,ALGA,PHYTO,PHYTO,,,,,,2.74,,,-20.85,,,,,,,,,,Added from 'JML ISOTOPE DATA',Phytoplankton,Basal,7/25/2000,,entry correct
+SIC.LML.2002.018,,A17,A17,,ALGA,ALGA,PHYTO,PHYTO,,,,,,,,,,,,,,,,,,,Added from 'JML ISOTOPE DATA',,,,,incomplete ratios
+SIC.LML.2000.001,,A18,A18,,ALGA,ALGA,PHYTO,PHYTO,,,,,,,,,-25.95,,,,,,,,,,Added from 'JML ISOTOPE DATA',,,,,incomplete ratios
+SIC.LML.2001.007,,A19,A19,,ALGA,ALGA,PERI,PERI,,,,,,1.24,,,-17.7,,,,,,,,,,Added from 'JML ISOTOPE DATA',Periphyton,Basal,6/21/2001,,entry correct
+SIC.LML.2001.005,,A2,A2,,ALGA,ALGA,PHYTO,PHYTO,,,,,,,,,,,,,,,,,,,Added from 'JML ISOTOPE DATA',,,,,incomplete ratios
+SIC.LML.2001.005,,A20,A20,,ALGA,ALGA,PERI,PERI,,,,,,-0.21,,,-22.18,,,,,,,,,,Added from 'JML ISOTOPE DATA',Periphyton,Basal,6/1/2001,,entry correct
+SIC.LML.2001.008,,A21,A21,,ALGA,ALGA,PERI,PERI,,,,,,2.2,,,-16.75,,,,,,,,,,Added from 'JML ISOTOPE DATA',Periphyton,Basal,7/11/2001,,entry correct
+SIC.LML.2000.004,,A22,A22,,ALGA,ALGA,PHYTO,PHYTO,,,,,,3.4,,,-19.13,,,,,,,,,,Added from 'JML ISOTOPE DATA',Phytoplankton,Basal,8/7/2000,,entry correct
+SIC.LML.2002.016,,A23,A23,,ALGA,ALGA,PHYTO,PHYTO,,,,,,,,,,,,,,,,,,,Added from 'JML ISOTOPE DATA',,,,,incomplete ratios
+SIC.LML.2000.004,,A24,A24,,ALGA,ALGA,PERI,PERI,,,,,,1.83,,,-21.82,,,,,,,,,,Added from 'JML ISOTOPE DATA',Periphyton,Basal,8/7/2000,,entry correct
+SIC.LML.2000.005,,A25,A25,,ALGA,ALGA,PERI,PERI,,,,,,0.34,,,-18.64,,,,,,,,,,Added from 'JML ISOTOPE DATA',Periphyton,Basal,8/22/2000,,entry correct
+SIC.LML.2001.010,,A26,A26,,ALGA,ALGA,PERI,PERI,,,,,,2.33,,,-19.53,,,,,,,,,,Added from 'JML ISOTOPE DATA',Periphyton,Basal,7/30/2001,,entry correct
+SIC.LML.2000.004,,A27,A27,,ALGA,ALGA,PERI,PERI,,,,,,2.18,,,-21.98,,,,,,,,,,Added from 'JML ISOTOPE DATA',Periphyton,Basal,8/7/2000,,entry correct
+SIC.LML.2000.003,,A28,A28,,ALGA,ALGA,PHYTO,PHYTO,,,,,,,,,-21.32,,,,,,,,,,Added from 'JML ISOTOPE DATA',,,,,incomplete ratios
+SIC.LML.1999.001,,A29,A29,,INVERT,INVERT,SIL,SIL,,,,,,3.98,,,-12.45,,,,,,,,,,Added from 'JML ISOTOPE DATA',Sils,Basal,9/15/1999,,entry correct
+SIC.LML.2001.008,,A3,A3,,ALGA,ALGA,PHYTO,PHYTO,,,,,,1.82,,,-24.35,,,,,,,,,,Added from 'JML ISOTOPE DATA',Phytoplankton,Basal,7/11/2001,,entry correct
+SIC.LML.2000.003,,A4,A4,,ALGA,ALGA,PERI,PERI,,,,,,,,,-19.7,,,,,,,,,,Added from 'JML ISOTOPE DATA',,,,,incomplete ratios
+SIC.LML.2000.002,,A5,A5,,ALGA,ALGA,PERI,PERI,,,,,,4.63,,,-23.92,,,,,,,,,,Added from 'JML ISOTOPE DATA',Periphyton,Basal,7/14/2000,,entry correct
+SIC.LML.2002.011,,A6,A6,,ALGA,ALGA,PERI,PERI,,,,,,1.01,,,-17.46,,,,,,,,,,Added from 'JML ISOTOPE DATA',Periphyton,Basal,6/14/2002,,entry correct
+SIC.LML.2002.011,,A7,A7,,ALGA,ALGA,PHYTO,PHYTO,,,,,,,,,-28.86,,,,,,,,,,Added from 'JML ISOTOPE DATA',,,,,incomplete ratios
+SIC.LML.2000.001,,A8,A8,,ALGA,ALGA,PHYTO,PHYTO,,,,,,2.94,,,-24.09,,,,,,,,,,Added from 'JML ISOTOPE DATA',Phytoplankton,Basal,7/11/2000,,entry correct
+SIC.LML.2000.004,,A9,A9,,ALGA,ALGA,PHYTO,PHYTO,,,,,,2.15,,,-19.47,,,,,,,,,,Added from 'JML ISOTOPE DATA',Phytoplankton,Basal,8/7/2000,,entry correct
+SIC.LML.1998.001,,I1,I1,,VERT,VERT,FISH,FISH,SS,,,,,10.14,,,-23.24,,,,,,,,,,Added from 'JML ISOTOPE DATA',SS,Fish,5/4/1998,,entry correct
+SIC.LML.1998.001,,I10,I10,,VERT,VERT,FISH,FISH,RS,,,,,9.1,,,-21.98,,,,,,,,,,Added from 'JML ISOTOPE DATA',RS,Fish,5/4/1998,,entry correct
+SIC.LML.2002.019,,I100,I100,3,INVERT,INVERT,INSECT,INSECT,LIMNEPHILIDAE,LIMNEPHILIDAE,,,,2.89,,,-19.23,,,,,,,,,,Added from 'JML ISOTOPE DATA',limnephilidae ,,7/22/2002,,issue present
+SIC.LML.2002.020,,I101,I101,,INVERT,INVERT,INSECT,INSECT,LIBELLULIDAE,LIBELLULIDAE,,,,4.69,,,-20.66,,,,,,,,,,Added from 'JML ISOTOPE DATA',libellulidae,,7/30/2002,,issue present
+SIC.LML.2002.020,,I102,I102,,INVERT,INVERT,INSECT,INSECT,HEPTAGENIIDAE,HEPTAGENIIDAE,,,,2.26,,,-22.53,,,,,,,,,,Added from 'JML ISOTOPE DATA',Heptageniidae,,7/30/2002,,issue present
+SIC.LML.2002.020,,I103,I103,2,INVERT,INVERT,INSECT,INSECT,GOMPHIDAE,GOMPHIDAE,,,,4.74,,,-23.46,,,,,,,,,,Added from 'JML ISOTOPE DATA',gomphidae ,,7/30/2002,,issue present
+SIC.LML.2002.020,,I104,I104,3,INVERT,INVERT,AMPHIPOD,,AMPHIPODA,AMPHIPODA,,,,,,,,,,,,,,,,,Added from 'JML ISOTOPE DATA',,,,,incomplete ratios
+SIC.LML.2002.017,,I105,I105,3,INVERT,INVERT,INSECT,,HEPTAGENIIDAE,HEPTAGENIIDAE,,,,1.73,,,-23.71,,,,,,,,,,Added from 'JML ISOTOPE DATA',Heptageniidae,,7/9/2002,,issue present
+SIC.LML.2002.017,,I106,I106,,INVERT,FISH,CRAYFISH,FISH,CR,CC,,,,4.65,,,-22.46,,,,,,,,,,Added from 'JML ISOTOPE DATA',CC,Fish,7/9/2002,,issue present
+SIC.LML.2002.017,,I107,I107,9,INVERT,INVERT,AMPHIPOD,AMPHIPOD,AMPHIPODA,AMPHIPODA,,,,1.98,,,-22.38,,,,,,,,,,Added from 'JML ISOTOPE DATA',scuds,,7/9/2002,,issue present
+SIC.LML.2002.022,,I108,I108,,INVERT,INVERT,INSECT,INSECT,GOMPHIDAE,GOMPHIDAE,,,,5.05,,,-18.24,,,,,,,,,,Added from 'JML ISOTOPE DATA',gomphidae,,8/7/2002,,issue present
+SIC.LML.2002.022,,I109,I109,,INVERT,INVERT,SIL,SIL,,,,,,5.82,,,-28.2,,,,,,,,,,Added from 'JML ISOTOPE DATA',Sils,,8/7/2002,,issue present
+SIC.FBL.2002.003,,I11,I11,,VERT,VERT,FISH,FISH,LT,LT,,,,10.24,,,-29.26,,,,,,,,,,Added from 'JML ISOTOPE DATA',,,,,incomplete ratios
+SIC.LML.2002.005,,I110,I110,25,INVERT,INVERT,INSECT,INSECT,HEXAGENIIDAE,HEXAGENIIDAE,,,,4.92,,,-27.06,,,,,,,,,,Added from 'JML ISOTOPE DATA',Hex ,,5/8/2002,,issue present
+SIC.LML.2002.021,,I111,I111,,INVERT,INVERT,INSECT,INSECT,GOMPHIDAE,GOMPHIDAE,,,,5.62,,,-20.87,,,,,,,,,,Added from 'JML ISOTOPE DATA',gomphidae,,8/3/2002,,issue present
+SIC.LML.2002.009,,I112,I112,,INVERT,INVERT,INSECT,INSECT,LIMNEPHILIDAE,LIMNEPHILIDAE,,,,0.92,,,-29.29,,,,,,,,,,Added from 'JML ISOTOPE DATA',limnephilidae ,,6/6/2002,,issue present
+SIC.LML.2002.009,,I113,I113,10,INVERT,INVERT,INSECT,INSECT,EPHEMEROPTERA,EPHEMEROPTERA,,,,1.84,,,-28.46,,,,,,,,,,Added from 'JML ISOTOPE DATA',ephemeropterans ,,6/6/2002,,issue present
+SIC.LML.2002.017,,I114,I114,,INVERT,INVERT,INSECT,INSECT,GOMPHIDAE,GOMPHIDAE,,,,4.7,,,-24.31,,,,,,,,,,Added from 'JML ISOTOPE DATA',gomphidae,,7/9/2002,,issue present
+SIC.LML.2002.016,,I115,I115,,INVERT,INVERT,INSECT,INSECT,HEPTAGENIIDAE,HEPTAGENIIDAE,,,,5.77,,,-21.16,,,,,,,,,,Added from 'JML ISOTOPE DATA',Heptageniidae,,6/28/2002,,issue present
+SIC.LML.2002.005,,I116,I116,50,INVERT,INVERT,INSECT,INSECT,DIPTERA,DIPTERA,,,,6.58,,,-30.62,,,,,,,,,,Added from 'JML ISOTOPE DATA',dipterans ,,5/8/2002,,issue present
+SIC.LML.2002.008,,I117,I117,25,INVERT,INVERT,ZOOP,ZOOP,DAPHNIA,DAPHNIA,,,,,,,,,,,,,,,,,Added from 'JML ISOTOPE DATA',,,,,incomplete ratios
+SIC.LML.2002.023,,I118,I118,,INVERT,INVERT,MUSSEL,MUSSEL,,,,,,4.9,,,-24.55,,,,,,,,,,Added from 'JML ISOTOPE DATA',mussel,,8/26/2002,,issue present
+SIC.LML.2002.024,,I119,I119,,ALGA,ALGA,PERI,PERI,,,,,,5.78,,,-20.03,,,,,,,,,,Added from 'JML ISOTOPE DATA',Periphyton,,8/27/2002,,issue present
+SIC.LML.2002.010,,I12,I12,,INVERT,INVERT,MUSSEL,MUSSEL,,,,,,4.97,,,-25.76,,,,,,,,,,Added from 'JML ISOTOPE DATA',mussel,,6/13/2002,,issue present
+SIC.LML.2002.024,,I120,I120,,ALGA,ALGA,PHYTO,PHYTO,,,,,,,,,,,,,,,,,,,Added from 'JML ISOTOPE DATA',,,,,incomplete ratios
+SIC.LML.2002.022,,I121,I121,,ALGA,ALGA,PERI,PERI,,,,,,5.5,,,-20.53,,,,,,,,,,Added from 'JML ISOTOPE DATA',Periphyton,,8/7/2002,,issue present
+SIC.LML.2002.022,,I122,I122,,ALGA,ALGA,PHYTO,PHYTO,,,,,,,,,,,,,,,,,,,Added from 'JML ISOTOPE DATA',,,,,incomplete ratios
+SIC.LML.2002.015,,I123,I123,5,INVERT,INVERT,INSECT,INSECT,COENGRIONIDAE,COENGRIONIDAE,,,,6.73,,,-24.06,,,,,,,,,,Added from 'JML ISOTOPE DATA',coengrionidae ,,6/21/2002,,issue present
+SIC.LML.2002.015,,I124,I124,,INVERT,INVERT,INSECT,INSECT,EPHEMEROPTERA,EPHEMEROPTERA,,,,2.22,,,-20.05,,,,,,,,,,Added from 'JML ISOTOPE DATA',ephemeroptera,,6/21/2002,,issue present
+SIC.LML.2002.015,,I125,I125,,INVERT,INVERT,SIL,SIL,,,,,,5.17,,,-17.85,,,,,,,,,,Added from 'JML ISOTOPE DATA',Sils,,6/21/2002,,issue present
+SIC.LML.2002.015,,I126,I126,,INVERT,INVERT,SIL,SIL,,,,,,5.08,,,-18.64,,,,,,,,,,Added from 'JML ISOTOPE DATA',Sils,,6/21/2002,,issue present
+SIC.LML.2002.015,,I127,I127,,INVERT,INVERT,INSECT,INSECT,GOMPHIDAE,GOMPHIDAE,,,,5.21,,,-22.8,,,,,,,,,,Added from 'JML ISOTOPE DATA',gomphidae,,6/21/2002,,issue present
+SIC.LML.2002.011,,I128,I128,,INVERT,INVERT,INSECT,INSECT,GOMPHIDAE,GOMPHIDAE,,,,5.85,,,-20.78,,,,,,,,,,Added from 'JML ISOTOPE DATA',gomphidae,,6/14/2002,,issue present
+SIC.LML.2002.011,,I129,I129,,INVERT,INVERT,INSECT,INSECT,LIMNEPHILIDAE,LIMNEPHILIDAE,,,,1.07,,,-27.16,,,,,,,,,,Added from 'JML ISOTOPE DATA',limnephilidae ,,6/14/2002,,issue present
+SIC.LML.2002.007,,I13,I13,,INVERT,FISH,CRAYFISH,FISH,CR,CC,,,,7.64,,,-18.22,,,,,,,,,,Added from 'JML ISOTOPE DATA',CC,Fish,5/31/2002,,issue present
+SIC.LML.2002.004,,I130,I130,,VERT,VERT,FISH,FISH,RS,RS,,,,9.74,,,-23.62,,,,,,,,,,Added from 'JML ISOTOPE DATA',,,,,incomplete ratios
+SIC.LML.2002.006,,I131,I131,,INVERT,INVERT,INSECT,INSECT,DIPTERA,DIPTERA,,,,7.44,,,-29.42,,,,,,,,,,Added from 'JML ISOTOPE DATA',,,,,incomplete ratios
+SIC.LML.2002.002,,I132,I132,,INVERT,INVERT,INSECT,INSECT,DIPTERA,DIPTERA,,,,6.84,,,-27.48,,,,,,,,,,Added from 'JML ISOTOPE DATA',,,,,incomplete ratios
+SIC.LML.2002.003,,I14,I14,,VERT,VERT,FISH,FISH,RS,RS,,,,10.3,,,-22.96,,,,,,,,,,Added from 'JML ISOTOPE DATA',RS,Fish,4/18/2002,,entry correct
+SIC.LML.2002.003,,I14,I14,,VERT,VERT,FISH,FISH,RS,RS,,,,10.3,,,-22.96,,,,,,,,,,Added from 'JML ISOTOPE DATA',RS,Fish,4/18/2002,,entry correct
+SIC.LML.2002.007,,I15,I15,,VERT,VERT,FISH,FISH,MM,MM,,,,8.12,,,-25.32,,,,,,,,,,Added from 'JML ISOTOPE DATA',MM,Fish,5/31/2002,,entry correct
+SIC.LML.2002.007,,I16,I16,,VERT,VERT,FISH,FISH,CC,CC,,,,9.11,,,-23.07,,,,,,,,,,Added from 'JML ISOTOPE DATA',CC,Fish,5/31/2002,,entry correct
+SIC.LML.2002.007,,I17,I17,,VERT,VERT,FISH,FISH,BB,BB,,,,10,,,-19.35,,,,,,,,,,Added from 'JML ISOTOPE DATA',BB,Fish,5/31/2002,,entry correct
+SIC.LML.2002.011,,I18,I18,,VERT,VERT,FISH,FISH,CC,CC,,,,8.94,,,-23.12,,,,,,,,,,Added from 'JML ISOTOPE DATA',CC,Fish,6/14/2002,,entry correct
+SIC.LML.2002.011,,I19,I19,,VERT,VERT,FISH,FISH,MM,MM,,,,8.54,,,-25.14,,,,,,,,,,Added from 'JML ISOTOPE DATA',MM,Fish,6/14/2002,,entry correct
+SIC.LML.1999.002,,I2,I2,,VERT,VERT,FISH,FISH,SMB,SMB,,,,8.28,,,-20.86,,,,,,,,,,Added from 'JML ISOTOPE DATA',SMB,Fish,10/7/1999,,entry correct
+SIC.LML.2002.011,,I20,I20,,VERT,VERT,FISH,FISH,CS,CS,,,,9.91,,,-22.11,,,,,,,,,,Added from 'JML ISOTOPE DATA',CS,Fish,6/14/2002,,entry correct
+SIC.LML.2002.012,,I21,I21,,VERT,VERT,FISH,FISH,BND,BND,,,,10.25,,,-25.96,,,,,,,,,,Added from 'JML ISOTOPE DATA',BND,Fish,6/16/2002,,entry correct
+SIC.LML.2002.011,,I22,I22,,VERT,VERT,FISH,FISH,PS,PS,,,,10.05,,,-21.81,,,,,,,,,,Added from 'JML ISOTOPE DATA',PS,Fish,6/14/2002,,entry correct
+SIC.LML.2002.011,,I22,I22,,VERT,VERT,FISH,FISH,PS,PS,,,,10.05,,,-21.81,,,,,,,,,,Added from 'JML ISOTOPE DATA',PS,Fish,6/17/2002,,entry correct
+SIC.LML.2002.014,,I23,I23,,VERT,VERT,FISH,FISH,SS,SS,,,,10.26,,,-24.39,,,,,,,,,,Added from 'JML ISOTOPE DATA',SS,Fish,6/18/2002,,entry correct
+SIC.LML.2002.011,,I24,I24,,INVERT,VERT,CRAYFISH,FISH,CR,CC,,,,7.01,,,-24.48,,,,,,,,,,Added from 'JML ISOTOPE DATA',CC,Fish,6/14/2002,,issue present
+SIC.LML.2001.014,,I25,I25,,VERT,VERT,FISH,FISH,WS,WS,,,,7.83,,,-15.04,,,,,,,,,,Added from 'JML ISOTOPE DATA',WS,Fish,10/8/2001,,entry correct
+SIC.LML.2001.016,,I26,I26,,VERT,VERT,FISH,FISH,LT,LT,,,,9.04,,,-28.66,,,,,,,,,,Added from 'JML ISOTOPE DATA',LT,Fish,10/22/2001,,entry correct
+SIC.LML.2001.014,,I27,I27,,VERT,VERT,FISH,FISH,CS,CS,,,,8.65,,,-22.24,,,,,,,,,,Added from 'JML ISOTOPE DATA',CS,Fish,10/8/2001,,entry correct
+SIC.LML.2001.012,,I28,I28,,VERT,VERT,FISH,FISH,CC,CC,,,,9.05,,,-19.54,,,,,,,,,,Added from 'JML ISOTOPE DATA',CC,Fish,9/12/2001,,entry correct
+SIC.LML.2001.012,,I29,I29,,VERT,VERT,FISH,FISH,PS,PS,,,,9.51,,,-19,,,,,,,,,,Added from 'JML ISOTOPE DATA',PS,Fish,9/12/2001,,entry correct
+SIC.LML.2001.001,,I3,I3,,VERT,VERT,FISH,FISH,LT,LT,,,,11.34,,,-26.73,,,,,,,,,,Added from 'JML ISOTOPE DATA',LT,Fish,5/9/2001,,entry correct
+SIC.LML.2001.012,,I30,I30,,VERT,VERT,FISH,FISH,WS,WS,,,,7.97,,,-19.33,,,,,,,,,,Added from 'JML ISOTOPE DATA',WS,Fish,9/12/2001,,entry correct
+SIC.LML.2001.012,,I31,I31,,VERT,VERT,FISH,FISH,MM,MM,,,,7.74,,,-24.84,,,,,,,,,,Added from 'JML ISOTOPE DATA',MM,Fish,9/12/2001,,entry correct
+SIC.LML.2001.014,,I32,I32,,VERT,VERT,FISH,FISH,CC,CC,,,,8.67,,,-21.58,,,,,,,,,,Added from 'JML ISOTOPE DATA',CC,Fish,10/8/2001,,entry correct
+SIC.LML.2001.004,,I33,I33,,VERT,VERT,FISH,FISH,PS,PS,,,,9.61,,,-22.91,,,,,,,,,,Added from 'JML ISOTOPE DATA',PS,Fish,5/31/2001,,entry correct
+SIC.LML.2001.014,,I34,I34,,VERT,VERT,FISH,FISH,SS,SS,,,,11.76,,,-24.71,,,,,,,,,,Added from 'JML ISOTOPE DATA',SS,Fish,10/8/2001,,entry correct
+SIC.LML.2001.014,,I35,I35,,VERT,VERT,FISH,FISH,BB,BB,,,,8.92,,,-17.66,,,,,,,,,,Added from 'JML ISOTOPE DATA',BB,Fish,10/8/2001,,entry correct
+SIC.LML.2001.013,,I36,I36,,VERT,VERT,FISH,FISH,RWF,RWF,,,,10.02,,,-22.8,,,,,,,,,,Added from 'JML ISOTOPE DATA',RWF,Fish,9/16/2001,,entry correct
+SIC.LML.2001.004,,I37,I37,,VERT,VERT,FISH,FISH,BND,BND,,,,11.19,,,-27.61,,,,,,,,,,Added from 'JML ISOTOPE DATA',BND,Fish,5/31/2001,,entry correct
+SIC.LML.2002.024,,I39,I39,,VERT,VERT,FISH,FISH,WS,WS,,,,8.47,,,-18.37,,,,,,,,,,Added from 'JML ISOTOPE DATA',WS,Fish,,,entry correct
+SIC.LML.1998.001,,I4,I4,,VERT,VERT,FISH,FISH,CC,CC,,,,8.88,,,-23.63,,,,,,,,,,Added from 'JML ISOTOPE DATA',CC,Fish,5/4/1998,,entry correct
+SIC.LML.2001.001,,I40,I40,,VERT,VERT,FISH,FISH,LT,LT,,,,11.25,,,-27.29,,,,,,,,,,Added from 'JML ISOTOPE DATA',LT,Fish,5/9/2001,,entry correct
+SIC.LML.2001.014,,I41,I41,,VERT,VERT,FISH,FISH,SMB,SMB,,,,9.39,,,-17.61,,,,,,,,,,Added from 'JML ISOTOPE DATA',SMB,Fish,10/8/2001,,entry correct
+SIC.LML.2001.009,,I42,I42,,VERT,VERT,FISH,FISH,PS,PS,,,,9.72,,,-20.57,,,,,,,,,,Added from 'JML ISOTOPE DATA',PS,Fish,7/27/2001,,entry correct
+SIC.LML.2001.009,,I43,I43,,VERT,VERT,FISH,FISH,PS,PS,,,,10.81,,,-22.19,,,,,,,,,,Added from 'JML ISOTOPE DATA',PS,Fish,7/27/2001,,entry correct
+SIC.LML.2001.006,,I44,I44,,VERT,VERT,FISH,FISH,CS,CS,,,,8.42,,,-23.68,,,,,,,,,,Added from 'JML ISOTOPE DATA',CS,Fish,6/7/2001,,entry correct
+SIC.LML.2001.014,,I45,I45,,VERT,VERT,FISH,FISH,RWF,RWF,,,,8.88,,,-20.56,,,,,,,,,,Added from 'JML ISOTOPE DATA',RWF,Fish,10/8/2001,,entry correct
+SIC.LML.2001.015,,I47,I47,,VERT,VERT,FISH,FISH,LT,LT,,,,9.68,,,-26.83,,,,,,,,,,Added from 'JML ISOTOPE DATA',LT,Fish,10/15/2001,,entry correct
+SIC.LML.2000.005,,I48,I48,,INVERT,INVERT,ZOOP,ZOOP,,,,,,5.1,,,-28.25,,,,,,,,,,Added from 'JML ISOTOPE DATA',Zoops,,8/22/2000,,entry correct
+SIC.LML.2001.005,,I49,I49,,INVERT,INVERT,ZOOP,ZOOP,,,,,,10.11,,,-35.33,,,,,,,,,,Added from 'JML ISOTOPE DATA',Zoops,,6/1/2001,,entry correct
+SIC.LML.2001.010,,I50,I50,,INVERT,INVERT,ZOOP,ZOOP,,,,,,8.3,,,-29.97,,,,,,,,,,Added from 'JML ISOTOPE DATA',Zoops,,7/30/2001,,entry correct
+SIC.LML.2001.011,,I51,I51,,INVERT,INVERT,ZOOP,ZOOP,,,,,,6.96,,,-29.49,,,,,,,,,,Added from 'JML ISOTOPE DATA',Zoops,,8/20/2001,,entry correct
+SIC.LML.2000.005,,I52,I52,,INVERT,INVERT,ZOOP,ZOOP,,,,,,3.67,,,-29.08,,,,,,,,,,Added from 'JML ISOTOPE DATA',Zoops,,8/22/2000,,entry correct
+SIC.LML.2000.001,,I53,I53,,INVERT,INVERT,ZOOP,ZOOP,,,,,,9.23,,,-30.53,,,,,,,,,,Added from 'JML ISOTOPE DATA',Zoops,,7/11/2000,,entry correct
+SIC.LML.2001.008,,I54,I54,,INVERT,INVERT,ZOOP,ZOOP,,,,,,7.06,,,-31.92,,,,,,,,,,Added from 'JML ISOTOPE DATA',Zoops,,7/11/2001,,entry correct
+SIC.LML.2001.007,,I55,I55,,INVERT,INVERT,ZOOP,ZOOP,,,,,,8.37,,,-34.16,,,,,,,,,,Added from 'JML ISOTOPE DATA',Zoops,,6/21/2001,,entry correct
+SIC.LML.2000.004,,I56,I56,,INVERT,INVERT,ZOOP,ZOOP,,,,,,4.12,,,-30.14,,,,,,,,,,Added from 'JML ISOTOPE DATA',Zoops,,8/7/2000,,entry correct
+SIC.LML.2002.018,,I57,I57,,INVERT,INVERT,ZOOP,ZOOP,,,,,,5.87,,,-24.85,,,,,,,,,,Added from 'JML ISOTOPE DATA',Zoops,,7/17/2002,,entry correct
+SIC.LML.2002.016,,I58,I58,,INVERT,INVERT,ZOOP,ZOOP,,,,,,4.75,,,-28.76,,,,,,,,,,Added from 'JML ISOTOPE DATA',Zoops,,6/28/2002,,entry correct
+SIC.LML.2000.003,,I59,I59,,INVERT,INVERT,ZOOP,ZOOP,,,,,,8.16,,,-30.07,,,,,,,,,,Added from 'JML ISOTOPE DATA',Zoops,,7/25/2000,,entry correct
+SIC.LML.2001.001,,I6,I6,,VERT,VERT,FISH,FISH,RS,RS,,,,10.52,,,-24.3,,,,,,,,,,Added from 'JML ISOTOPE DATA',RS,Fish,5/9/2001,,entry correct
+SIC.LML.2001.001,,I6,I6,,VERT,VERT,FISH,FISH,RS,RS,,,,10.52,,,-24.3,,,,,,,,,,Added from 'JML ISOTOPE DATA',RS,Fish,5/9/2001,,entry correct
+SIC.LML.2000.004,,I61,I61,,INVERT,INVERT,ZOOP,ZOOP,,,,,,6.35,,,-27.99,,,,,,,,,,Added from 'JML ISOTOPE DATA',Zoops,,8/7/2000,,entry correct
+SIC.LML.2002.007,,I62,I62,,INVERT,INVERT,ZOOP,ZOOP,,,,,,8.68,,,-31.51,,,,,,,,,,Added from 'JML ISOTOPE DATA',Zoops,,5/31/2002,,entry correct
+SIC.LML.2002.018,,I64,I64,,INVERT,INVERT,CRAYFISH,CRAYFISH,CR,CR,,,,7.08,,,-20.33,,,,,,,,,,Added from 'JML ISOTOPE DATA',CR,,7/17/2002,,entry correct
+SIC.LML.2002.016,,I65,I65,,INVERT,INVERT,INSECT,INSECT,GOMPHIDAE,GOMPHIDAE,,,,5.16,,,-21.74,,,,,,,,,,Added from 'JML ISOTOPE DATA',gomphidae,,6/28/2002,,entry correct
+SIC.LML.2002.016,,I66,I66,,VERT,VERT,FISH,FISH,CC,CC,,,,8.49,,,-23.06,,,,,,,,,,Added from 'JML ISOTOPE DATA',CC,Fish,6/28/2002,,entry correct
+SIC.LML.2002.016,,I67,I67,,VERT,VERT,FISH,FISH,PS,PS,,,,9.83,,,-21.76,,,,,,,,,,Added from 'JML ISOTOPE DATA',PS,Fish,6/28/2002,,entry correct
+SIC.LML.2002.016,,I68,I68,,VERT,VERT,FISH,FISH,MM,MM,,,,,,,-25.92,,,,,,,,,,Added from 'JML ISOTOPE DATA',,,,,incomplete ratios
+SIC.LML.2002.016,,I69,I69,,VERT,VERT,FISH,FISH,SS,SS,,,,9.53,,,-23.46,,,,,,,,,,Added from 'JML ISOTOPE DATA',SS,FIsh,6/28/2002,,entry correct
+SIC.LML.2001.003,,I7,I7,,VERT,VERT,FISH,FISH,RS,RS,,,,10.84,,,-23.71,,,,,,,,,,Added from 'JML ISOTOPE DATA',RS,Fish,5/14/2001,,entry correct
+SIC.LML.2001.003,,I7,I7,,VERT,VERT,FISH,FISH,RS,RS,,,,10.84,,,-23.71,,,,,,,,,,Added from 'JML ISOTOPE DATA',RS,Fish,5/14/2001,,entry correct
+SIC.LML.2002.018,,I70,I70,,INVERT,INVERT,INSECT,INSECT,,,,,,4.08,,,-18.36,,,,,,,,,,Added from 'JML ISOTOPE DATA',"Odota, Ephemeroptera",,7/17/2002,,entry correct
+SIC.LML.2002.018,,I71,I71,,VERT,VERT,FISH,FISH,BB,BB,,,,7.94,,,-20.42,,,,,,,,,,Added from 'JML ISOTOPE DATA',BB,Fish,7/17/2002,,entry correct
+SIC.LML.2002.018,,I72,I72,,VERT,VERT,FISH,FISH,SMB,SMB,,,,7.44,,,-21.13,,,,,,,,,,Added from 'JML ISOTOPE DATA',SMB,Fish,7/17/2002,,entry correct
+SIC.LML.2002.018,,I73,I73,,VERT,VERT,FISH,FISH,CS,CS,,,,8.94,,,-22.46,,,,,,,,,,Added from 'JML ISOTOPE DATA',CS,Fish,7/17/2002,,entry correct
+SIC.LML.2002.018,,I74,I74,,VERT,VERT,FISH,FISH,PS,PS,,,,9.27,,,-22.03,,,,,,,,,,Added from 'JML ISOTOPE DATA',PS,Fish,7/17/2002,,entry correct
+SIC.LML.2002.018,,I75,I75,,VERT,VERT,FISH,FISH,CC,CC,,,,7.59,,,-25.58,,,,,,,,,,Added from 'JML ISOTOPE DATA',CC,Fish,7/17/2002,,entry correct
+SIC.LML.2002.018,,I76,I76,,INVERT,INVERT,MUSSEL,MUSSEL,,,,,,6.32,,,-30.14,,,,,,,,,,Added from 'JML ISOTOPE DATA',mussel,,7/17/2002,,entry correct
+SIC.LML.2002.022,,I79,I79,,VERT,VERT,FISH,FISH,CC,CC,,,,9.04,,,-22.55,,,,,,,,,,Added from 'JML ISOTOPE DATA',CC,Fish,8/7/2002,,entry correct
+SIC.LML.2001.002,,I8,I8,,VERT,VERT,FISH,FISH,RS,RS,,,,10.74,,,-24.23,,,,,,,,,,Added from 'JML ISOTOPE DATA',RS,Fish,5/10/2001,,entry correct
+SIC.LML.2001.002,,I8,I8,,VERT,VERT,FISH,FISH,RS,RS,,,,10.74,,,-24.23,,,,,,,,,,Added from 'JML ISOTOPE DATA',RS,Fish,5/10/2001,,entry correct
+SIC.LML.2002.022,,I80,I80,,VERT,VERT,FISH,FISH,PS,PS,,,,8.79,,,-22.52,,,,,,,,,,Added from 'JML ISOTOPE DATA',PS,Fish,8/7/2002,,entry correct
+SIC.LML.2002.022,,I81,I81,,VERT,VERT,FISH,FISH,MM,MM,,,,7.67,,,-25.16,,,,,,,,,,Added from 'JML ISOTOPE DATA',MM,Fish,8/7/2002,,entry correct
+SIC.LML.2002.022,,I82,I82,,VERT,VERT,FISH,FISH,BB,BB,,,,8.29,,,-19.55,,,,,,,,,,Added from 'JML ISOTOPE DATA',BB,Fish,8/7/2002,,entry correct
+SIC.LML.2001.014,,I9,I9,,VERT,VERT,FISH,FISH,RS,RS,,,,9.17,,,-21.71,,,,,,,,,,Added from 'JML ISOTOPE DATA',RS,Fish,10/8/2001,,entry correct
+SIC.LML.2001.014,,I9,I9,,VERT,VERT,FISH,FISH,RS,RS,,,,9.17,,,-21.71,,,,,,,,,,Added from 'JML ISOTOPE DATA',RS,Fish,10/8/2001,,entry correct
+,,LT.LML.051697.RA,LT.LML.051697.RA,,VERT,VERT,FISH,FISH,LT,LT,,,,13.39,,,-25,,,,,,,,,,Added from 'JML ISOTOPE DATA',LT,Fish,5/16/1997,,entry correct
+,,SMB.LML.051401.BEF.008,NEEDS NEW ITEM_N,,VERT,VERT,FISH,FISH,SMB,LT,,,,11.46,,,-27.97,,,,,,,,,,Added from 'JML ISOTOPE DATA',LT,Fish,5/13/2001,,issue present
+,,SMB.LML.051401.BEF.009,NEEDS NEW ITEM_N,,VERT,VERT,FISH,FISH,SMB,LT,,,,11.69,,,-27.35,,,,,,,,,,Added from 'JML ISOTOPE DATA',LT,Fish,5/13/2001,,issue present
+,,SMB.LML.051401.BEF.010,NEEDS NEW ITEM_N,,VERT,VERT,FISH,FISH,SMB,LT,,,,12.68,,,-26.5,,,,,,,,,,Added from 'JML ISOTOPE DATA',LT,Fish,5/13/2001,,issue present
+,,SMB.LML.051401.BEF.011,NEEDS NEW ITEM_N,,VERT,VERT,FISH,FISH,SMB,LT,,,,12,,,-24.84,,,,,,,,,,Added from 'JML ISOTOPE DATA',LT,Fish,5/13/2001,,issue present
+,,SMB.LML.051401.BEF.012,NEEDS NEW ITEM_N,,VERT,VERT,FISH,FISH,SMB,LT,,,,12.35,,,-25.33,,,,,,,,,,Added from 'JML ISOTOPE DATA',LT,Fish,5/11/2001,,issue present
+,,SMB.LML.051401.BEF.013,NEEDS NEW ITEM_N,,VERT,VERT,FISH,FISH,SMB,LT,,,,11.95,,,-24.07,,,,,,,,,,Added from 'JML ISOTOPE DATA',LT,Fish,5/11/2001,,issue present
+,,SMB.LML.051401.BEF.014,NEEDS NEW ITEM_N,,VERT,VERT,FISH,FISH,SMB,LT,,,,11.86,,,-25.3,,,,,,,,,,Added from 'JML ISOTOPE DATA',LT,Fish,5/11/2001,,issue present
+,,SMB.LML.051401.BEF.018,NEEDS NEW ITEM_N,,VERT,VERT,FISH,FISH,SMB,LT,,,,12.36,,,-25.82,,,,,,,,,,Added from 'JML ISOTOPE DATA',LT,Fish,5/11/2001,,issue present
+,,SMB.LML.061901.BEF.001,NEEDS NEW ITEM_N,,VERT,VERT,FISH,FISH,SMB,LT,,,,11.97,,,-25.45,,,,,,,,,,Added from 'JML ISOTOPE DATA',LT,Fish,5/17/2002,,issue present
+,,SMB.LML.061901.RANG.001,NEEDS NEW ITEM_N,,VERT,VERT,FISH,FISH,SMB,LT,,,,11.8,,,-24.71,,,,,,,,,,Added from 'JML ISOTOPE DATA',LT,Fish,5/10/2002,,issue present
+,,SMB.LML.062301.RANG.001,NEEDS NEW ITEM_N,,VERT,VERT,FISH,FISH,SMB,LT,,,,12.7,,,-24.11,,,,,,,,,,Added from 'JML ISOTOPE DATA',LT,Fish,6/3/2002,,issue present
+,,SMB.LML.062301.RANG.002,NEEDS NEW ITEM_N,,VERT,VERT,FISH,FISH,SMB,LT,,,,13.25,,,-23.55,,,,,,,,,,Added from 'JML ISOTOPE DATA',LT,Fish,5/26/2002,,issue present
+,,SMB.LML.062701.BEF.001,NEEDS NEW ITEM_N,,VERT,VERT,FISH,FISH,SMB,LT,,,,12.09,,,-24.38,,,,,,,,,,Added from 'JML ISOTOPE DATA',LT,Fish,5/10/2002,,issue present
+,,SMB.LML.062701.BEF.002,NEEDS NEW ITEM_N,,VERT,VERT,FISH,FISH,SMB,LT,,,,11.69,,,-24.93,,,,,,,,,,Added from 'JML ISOTOPE DATA',LT,Fish,5/5/2002,,issue present
+,,SMB.LML.062701.BEF.003,NEEDS NEW ITEM_N,,VERT,VERT,FISH,FISH,SMB,LT,,,,12.33,,,-24.87,,,,,,,,,,Added from 'JML ISOTOPE DATA',LT,Fish,5/10/2002,,issue present
+,,SMB.LML.062701.BEF.004,NEEDS NEW ITEM_N,,VERT,VERT,FISH,FISH,SMB,LT,,,,12.14,,,-25.3,,,,,,,,,,Added from 'JML ISOTOPE DATA',LT,Fish,5/9/2002,,issue present
+,,SMB.LML.062701.BEF.005,NEEDS NEW ITEM_N,,VERT,VERT,FISH,FISH,SMB,LT,,,,12.58,,,-25.72,,,,,,,,,,Added from 'JML ISOTOPE DATA',LT,Fish,5/6/2002,,issue present
+,,SMB.LML.062701.BEF.006,NEEDS NEW ITEM_N,,VERT,VERT,FISH,FISH,SMB,LT,,,,12.08,,,-25.25,,,,,,,,,,Added from 'JML ISOTOPE DATA',LT,Fish,5/11/2002,,issue present
+,,SMB.LML.062701.BEF.007,NEEDS NEW ITEM_N,,VERT,VERT,FISH,FISH,SMB,LT,,,,12.23,,,-24.66,,,,,,,,,,Added from 'JML ISOTOPE DATA',LT,Fish,5/17/2002,,issue present
+,,SMB.LML.062701.BEF.008,NEEDS NEW ITEM_N,,VERT,VERT,FISH,FISH,SMB,LT,,,,11.72,,,-25.16,,,,,,,,,,Added from 'JML ISOTOPE DATA',LT,Fish,5/11/2002,,issue present
+,,cc,NEEDS NEW ITEM_N,,VERT,VERT,FISH,FISH,SMB,LT,,,,11.77,,,-24.72,,,,,,,,,,Added from 'JML ISOTOPE DATA',LT,Fish,5/9/2002,,issue present
+,,SMB.LML.062701.BEF.010,NEEDS NEW ITEM_N,,VERT,VERT,FISH,FISH,SMB,LT,,,,12.95,,,-24.8,,,,,,,,,,Added from 'JML ISOTOPE DATA',LT,Fish,5/9/2002,,issue present
+,,SMB.LML.071001.RANG.001,NEEDS NEW ITEM_N,,VERT,VERT,FISH,FISH,SMB,LT,,,,12.51,,,-26.31,,,,,,,,,,Added from 'JML ISOTOPE DATA',LT,Fish,5/25/2002,,issue present
+,,SMB.LML.071201.RANG.001,NEEDS NEW ITEM_N,,VERT,VERT,FISH,FISH,SMB,LT,,,,12.39,,,-25.06,,,,,,,,,,Added from 'JML ISOTOPE DATA',LT,Fish,5/11/2002,,issue present
+,,SMB.LML.071201.RANG.002,NEEDS NEW ITEM_N,,VERT,VERT,FISH,FISH,SMB,LT,,,,12.38,,,-25.85,,,,,,,,,,Added from 'JML ISOTOPE DATA',LT,Fish,5/5/2002,,issue present
+,,SMB.LML.071201.RANG.003,NEEDS NEW ITEM_N,,VERT,VERT,FISH,FISH,SMB,LT,,,,12.21,,,-25.38,,,,,,,,,,Added from 'JML ISOTOPE DATA',LT,Fish,5/9/2002,,issue present
+,,SMB.LML.071201.RANG.004,NEEDS NEW ITEM_N,,VERT,VERT,FISH,FISH,SMB,LT,,,,11.95,,,-25.42,,,,,,,,,,Added from 'JML ISOTOPE DATA',LT,Fish,4/22/2002,,issue present
+,,SMB.LML.071201.RANG.005,NEEDS NEW ITEM_N,,VERT,VERT,FISH,FISH,SMB,LT,,,,12.34,,,-24.38,,,,,,,,,,Added from 'JML ISOTOPE DATA',LT,Fish,5/10/2002,,issue present
+,,SMB.LML.071301.GLN.001,NEEDS NEW ITEM_N,,VERT,VERT,FISH,FISH,SMB,LT,,,,12.38,,,-22.88,,,,,,,,,,Added from 'JML ISOTOPE DATA',LT,Fish,5/10/2002,,issue present
+,,SMB.LML.071301.GLN.002,NEEDS NEW ITEM_N,,VERT,VERT,FISH,FISH,SMB,LT,,,,12.8,,,-22.4,,,,,,,,,,Added from 'JML ISOTOPE DATA',LT,Fish,5/4/2002,,issue present
+,,SMB.LML.072001.RANG.001,NEEDS NEW ITEM_N,,VERT,VERT,FISH,FISH,SMB,LT,,,,12.38,,,-24.77,,,,,,,,,,Added from 'JML ISOTOPE DATA',LT,Fish,5/31/2002,,issue present
+,,SMB.LML.072301.RANG.001,NEEDS NEW ITEM_N,,VERT,VERT,FISH,FISH,SMB,LT,,,,12.44,,,-24.65,,,,,,,,,,Added from 'JML ISOTOPE DATA',LT,Fish,6/3/2002,,issue present
+,,SMB.LML.072401.RANG.001,NEEDS NEW ITEM_N,,VERT,VERT,FISH,FISH,SMB,LT,,,,12.53,,,-24.48,,,,,,,,,,Added from 'JML ISOTOPE DATA',LT,Fish,4/14/2002,,issue present
+,,SMB.LML.072401.RANG.002,NEEDS NEW ITEM_N,,VERT,VERT,FISH,FISH,SMB,LT,,,,11.89,,,-24.41,,,,,,,,,,Added from 'JML ISOTOPE DATA',LT,Fish,4/14/2002,,issue present
+,,SMB.LML.072701.GLN.001,NEEDS NEW ITEM_N,,VERT,VERT,FISH,FISH,SMB,LT,,,,12.23,,,-25.21,,,,,,,,,,Added from 'JML ISOTOPE DATA',LT,Fish,5/2/2002,,issue present
+,,SMB.LML.072701.GLN.002,NEEDS NEW ITEM_N,,VERT,VERT,FISH,FISH,SMB,LT,,,,12.03,,,-25.73,,,,,,,,,,Added from 'JML ISOTOPE DATA',LT,Fish,5/2/2002,,issue present
+,,SMB.LML.072701.GLN.003,NEEDS NEW ITEM_N,,VERT,VERT,FISH,FISH,SMB,LT,,,,12.76,,,-25.56,,,,,,,,,,Added from 'JML ISOTOPE DATA',LT,Fish,6/2/2002,,issue present
+,,SMB.LML.072701.GLN.004,NEEDS NEW ITEM_N,,VERT,VERT,FISH,FISH,SMB,LT,,,,12.86,,,-23.96,,,,,,,,,,Added from 'JML ISOTOPE DATA',LT,Fish,5/31/2002,,issue present
+,,SMB.LML.072701.GLN.005,NEEDS NEW ITEM_N,,VERT,VERT,FISH,FISH,SMB,LT,,,,12.59,,,-24.9,,,,,,,,,,Added from 'JML ISOTOPE DATA',LT,Fish,6/3/2002,,issue present
+,,SMB.LML.090901.BEF.023,NEEDS NEW ITEM_N,,VERT,VERT,FISH,FISH,SMB,LT,,,,16.71,,,-20.96,,,,,,,,,,Added from 'JML ISOTOPE DATA',LT,Fish,~97,,issue present
+,,SMB.LML.090901.BEF.025,NEEDS NEW ITEM_N,,VERT,VERT,FISH,FISH,SMB,LT,,,,12.12,,,-25.78,,,,,,,,,,Added from 'JML ISOTOPE DATA',LT,Fish,6/7/2002,,issue present
+,,SMB.LML.090901.BEF.026,NEEDS NEW ITEM_N,,VERT,VERT,FISH,FISH,SMB,LT,,,,12.78,,,-22.49,,,,,,,,,,Added from 'JML ISOTOPE DATA',LT,Fish,6/7/2002,,issue present
+,,SMB.LML.090901.BEF.027,NEEDS NEW ITEM_N,,VERT,VERT,FISH,FISH,SMB,LT,,,,12.67,,,-24.56,,,,,,,,,,Added from 'JML ISOTOPE DATA',LT,Fish,6/7/2002,,issue present
+,,SMB.LML.090901.BEF.028,NEEDS NEW ITEM_N,,VERT,VERT,FISH,FISH,SMB,LT,,,,11.46,,,-25.71,,,,,,,,,,Added from 'JML ISOTOPE DATA',LT,Fish,6/7/2002,,issue present
+,,SMB.LML.090901.BEF.030,NEEDS NEW ITEM_N,,VERT,VERT,FISH,FISH,SMB,LT,,,,12.39,,,-25.97,,,,,,,,,,Added from 'JML ISOTOPE DATA',LT,Fish,6/28/2002,,issue present
+,,SMB.LML.090901.BEF.031,NEEDS NEW ITEM_N,,VERT,VERT,FISH,FISH,SMB,LT,,,,12.47,,,-25.52,,,,,,,,,,Added from 'JML ISOTOPE DATA',LT,Fish,6/28/2002,,issue present
+,,SMB.LML.090901.BEF.032,NEEDS NEW ITEM_N,,VERT,VERT,FISH,FISH,SMB,LT,,,,12.26,,,-24.27,,,,,,,,,,Added from 'JML ISOTOPE DATA',LT,Fish,6/9/2002,,issue present
+,,SMB.LML.090901.BEF.033,NEEDS NEW ITEM_N,,VERT,VERT,FISH,FISH,SMB,LT,,,,12.11,,,-24.26,,,,,,,,,,Added from 'JML ISOTOPE DATA',LT,Fish,6/9/2002,,issue present
+,,SMB.LML.090901.BEF.035,NEEDS NEW ITEM_N,,VERT,VERT,FISH,FISH,SMB,LT,,,,12.02,,,-24.06,,,,,,,,,,Added from 'JML ISOTOPE DATA',LT,Fish,6/16/2002,,issue present
+,,SMB.LML.090901.BEF.036,NEEDS NEW ITEM_N,,VERT,VERT,FISH,FISH,SMB,LT,,,,11.88,,,-25.97,,,,,,,,,,Added from 'JML ISOTOPE DATA',LT,Fish,7/20/2002,,issue present
+,,SMB.LML.090901.BEF.037,NEEDS NEW ITEM_N,,VERT,VERT,FISH,FISH,SMB,LT,,,,10.94,,,-27.29,,,,,,,,,,Added from 'JML ISOTOPE DATA',LT,Fish,7/20/2002,,issue present
+,,SMB.LML.090901.BEF.038,NEEDS NEW ITEM_N,,VERT,VERT,FISH,FISH,SMB,LT,,,,12.54,,,-25.03,,,,,,,,,,Added from 'JML ISOTOPE DATA',LT,Fish,7/20/2002,,issue present
+,,SMB.LML.090901.BEF.039,NEEDS NEW ITEM_N,,VERT,VERT,FISH,FISH,SMB,LT,,,,12.44,,,-26.72,,,,,,,,,,Added from 'JML ISOTOPE DATA',LT,Fish,7/20/2002,,issue present
+,,SMB.LML.090901.BEF.040,NEEDS NEW ITEM_N,,VERT,VERT,FISH,FISH,SMB,LT,,,,11.44,,,-26.96,,,,,,,,,,Added from 'JML ISOTOPE DATA',LT,Fish,7/20/2002,,issue present
+,,SMB.LML.090901.BEF.041,NEEDS NEW ITEM_N,,VERT,VERT,FISH,FISH,SMB,LT,,,,12.26,,,-26.95,,,,,,,,,,Added from 'JML ISOTOPE DATA',LT,Fish,7/20/2002,,issue present
+,,T6046,T6046,,VERT,VERT,FISH,FISH,LT,LT,,,,12.46,,,-24.96,,,,,,,,,,Added from 'JML ISOTOPE DATA',LT,Fish,9/7/1997,,entry correct
+,,T6047,T6047,,VERT,VERT,FISH,FISH,LT,LT,,,,12.29,,,-25.99,,,,,,,,,,Added from 'JML ISOTOPE DATA',LT,Fish,9/7/1997,,entry correct
+,,T6049,T6049,,VERT,VERT,FISH,FISH,LT,LT,,,,12.02,,,-25.75,,,,,,,,,,Added from 'JML ISOTOPE DATA',LT,Fish,9/8/1997,,entry correct
+,,T6051,T6051,,VERT,VERT,FISH,FISH,LT,LT,,,,12.67,,,-24.74,,,,,,,,,,Added from 'JML ISOTOPE DATA',LT,Fish,9/8/1997,,entry correct
+,,T6089,T6089,,VERT,VERT,FISH,FISH,LT,LT,,,,12.38,,,-25.37,,,,,,,,,,Added from 'JML ISOTOPE DATA',LT,Fish,7/2/1997,,entry correct
+,,T6167,T6167,,VERT,VERT,FISH,FISH,LT,LT,,,,12.17,,,-25.1,,,,,,,,,,Added from 'JML ISOTOPE DATA',LT,Fish,5/16/2001,,entry correct
+,,T6169,T6169,,VERT,VERT,FISH,FISH,LT,LT,,,,12.23,,,-25.74,,,,,,,,,,Added from 'JML ISOTOPE DATA',LT,Fish,5/17/2001,,entry correct
+,,T6170,T6170,,VERT,VERT,FISH,FISH,LT,LT,,,,12.78,,,-26.84,,,,,,,,,,Added from 'JML ISOTOPE DATA',LT,Fish,5/17/2001,,entry correct
+,,T6171,T6171,,VERT,VERT,FISH,FISH,LT,LT,,,,12.43,,,-26.07,,,,,,,,,,Added from 'JML ISOTOPE DATA',LT,Fish,5/17/2001,,entry correct
+,,T6172,T6172,,VERT,VERT,FISH,FISH,LT,LT,,,,12.44,,,-26.27,,,,,,,,,,Added from 'JML ISOTOPE DATA',LT,Fish,5/18/2001,,entry correct
+,,T6173,T6173,,VERT,VERT,FISH,FISH,LT,LT,,,,12.07,,,-26.31,,,,,,,,,,Added from 'JML ISOTOPE DATA',LT,Fish,5/18/2001,,entry correct
+,,T6175,T6175,,VERT,VERT,FISH,FISH,LT,LT,,,,12.41,,,-23.83,,,,,,,,,,Added from 'JML ISOTOPE DATA',LT,Fish,5/19/2001,,entry correct
+,,T6176,T6176,,VERT,VERT,FISH,FISH,LT,LT,,,,12.48,,,-23.27,,,,,,,,,,Added from 'JML ISOTOPE DATA',LT,Fish,5/19/2001,,entry correct
+,,T6177,T6177,,VERT,VERT,FISH,FISH,LT,LT,,,,11.57,,,-26.05,,,,,,,,,,Added from 'JML ISOTOPE DATA',LT,Fish,5/19/2001,,entry correct
+,,T6178,T6178,,VERT,VERT,FISH,FISH,LT,LT,,,,12.04,,,-27.43,,,,,,,,,,Added from 'JML ISOTOPE DATA',LT,Fish,5/19/2001,,entry correct
+,,T6179,T6179,,VERT,VERT,FISH,FISH,LT,LT,,,,13.51,,,-23.44,,,,,,,,,,Added from 'JML ISOTOPE DATA',LT,Fish,5/23/2001,,entry correct
+,,T6181,T6181,,VERT,VERT,FISH,FISH,LT,LT,,,,13.05,,,-25.44,,,,,,,,,,Added from 'JML ISOTOPE DATA',LT,Fish,6/21/2001,,entry correct
+,,T6182,T6182,,VERT,VERT,FISH,FISH,LT,LT,,,,12.62,,,-26.15,,,,,,,,,,Added from 'JML ISOTOPE DATA',LT,Fish,10/8/2001,,entry correct
+,,T6183,T6183,,VERT,VERT,FISH,FISH,LT,LT,,,,11.11,,,-25.16,,,,,,,,,,Added from 'JML ISOTOPE DATA',LT,Fish,10/8/2001,,entry correct
+,,T6184,T6184,,VERT,VERT,FISH,FISH,LT,LT,,,,12.2,,,-25.32,,,,,,,,,,Added from 'JML ISOTOPE DATA',LT,Fish,10/8/2001,,entry correct
+,,T6185,T6185,,VERT,VERT,FISH,FISH,LT,LT,,,,11.56,,,-24.99,,,,,,,,,,Added from 'JML ISOTOPE DATA',LT,Fish,10/8/2001,,entry correct
+,,T6186,T6186,,VERT,VERT,FISH,FISH,LT,LT,,,,12.59,,,-25.13,,,,,,,,,,Added from 'JML ISOTOPE DATA',LT,Fish,1/28/2002,,entry correct
+,,T6187,T6187,,VERT,VERT,FISH,FISH,LT,LT,,,,13.36,,,-23.88,,,,,,,,,,Added from 'JML ISOTOPE DATA',LT,Fish,1/28/2002,,entry correct
+,,T6188,T6188,,VERT,VERT,FISH,FISH,LT,LT,,,,11.92,,,-24.46,,,,,,,,,,Added from 'JML ISOTOPE DATA',LT,Fish,1/28/2002,,entry correct
+,,T6189,T6189,,VERT,VERT,FISH,FISH,LT,LT,,,,11.7,,,-23.09,,,,,,,,,,Added from 'JML ISOTOPE DATA',LT,Fish,1/28/2002,,entry correct
+,,T6190,T6190,,VERT,VERT,FISH,FISH,LT,LT,,,,12.26,,,-25.33,,,,,,,,,,Added from 'JML ISOTOPE DATA',LT,Fish,1/29/2002,,entry correct
+,,T6191,T6191,,VERT,VERT,FISH,FISH,LT,LT,,,,11.65,,,-26.07,,,,,,,,,,Added from 'JML ISOTOPE DATA',LT,Fish,2/3/2002,,entry correct
+,,T6192,T6192,,VERT,VERT,FISH,FISH,LT,LT,,,,11.55,,,-24.71,,,,,,,,,,Added from 'JML ISOTOPE DATA',LT,Fish,2/3/2002,,entry correct
+,,T6193,T6193,,VERT,VERT,FISH,FISH,LT,LT,,,,12.71,,,-23.12,,,,,,,,,,Added from 'JML ISOTOPE DATA',LT,Fish,2/3/2002,,entry correct
+,,T6194,T6194,,VERT,VERT,FISH,FISH,LT,LT,,,,12.49,,,-24.61,,,,,,,,,,Added from 'JML ISOTOPE DATA',LT,Fish,2/3/2002,,entry correct
+,,T6195,T6195,,VERT,VERT,FISH,FISH,LT,LT,,,,12.6,,,-24.44,,,,,,,,,,Added from 'JML ISOTOPE DATA',LT,Fish,2/3/2002,,entry correct
+,,T6196,T6196,,VERT,VERT,FISH,FISH,LT,LT,,,,12,,,-24.27,,,,,,,,,,Added from 'JML ISOTOPE DATA',LT,Fish,2/3/2002,,entry correct
+,,T6197,T6197,,VERT,VERT,FISH,FISH,LT,LT,,,,12.14,,,-25.68,,,,,,,,,,Added from 'JML ISOTOPE DATA',LT,Fish,2/3/2002,,entry correct
+,,T6198,T6198,,VERT,VERT,FISH,FISH,LT,LT,,,,12.65,,,-24.62,,,,,,,,,,Added from 'JML ISOTOPE DATA',LT,Fish,2/3/2002,,entry correct
+,,T6199,T6199,,VERT,VERT,FISH,FISH,LT,LT,,,,13.12,,,-24.09,,,,,,,,,,Added from 'JML ISOTOPE DATA',LT,Fish,2/3/2002,,entry correct
+,,T6702,T6702,,VERT,VERT,FISH,FISH,LT,LT,,,,12.81,,,-25.91,,,,,,,,,,Added from 'JML ISOTOPE DATA',LT,Fish,6/1/2002,,entry correct
+,,T6703,T6703,,VERT,VERT,FISH,FISH,LT,LT,,,,12.76,,,-25.69,,,,,,,,,,Added from 'JML ISOTOPE DATA',LT,Fish,6/1/2002,,entry correct
+,,T6704,T6704,,VERT,VERT,FISH,FISH,LT,LT,,,,12.72,,,-25.81,,,,,,,,,,Added from 'JML ISOTOPE DATA',LT,Fish,6/1/2002,,entry correct
+,,T6705,T6705,,VERT,VERT,FISH,FISH,LT,LT,,,,12.32,,,-27.29,,,,,,,,,,Added from 'JML ISOTOPE DATA',LT,Fish,6/1/2002,,entry correct
+,,T6706,T6706,,VERT,VERT,FISH,FISH,LT,LT,,,,12.57,,,-25.29,,,,,,,,,,Added from 'JML ISOTOPE DATA',LT,Fish,6/1/2002,,entry correct
+,,T6707,T6707,,VERT,VERT,FISH,FISH,LT,LT,,,,12.44,,,-24.34,,,,,,,,,,Added from 'JML ISOTOPE DATA',LT,Fish,6/1/2002,,entry correct
+,,T6708,T6708,,VERT,VERT,FISH,FISH,LT,LT,,,,12.41,,,-25,,,,,,,,,,Added from 'JML ISOTOPE DATA',LT,Fish,6/1/2002,,entry correct
+,,T6709,T6709,,VERT,VERT,FISH,FISH,LT,LT,,,,12.38,,,-25.83,,,,,,,,,,Added from 'JML ISOTOPE DATA',LT,Fish,6/1/2002,,entry correct
+,,T6710,T6710,,VERT,VERT,FISH,FISH,LT,LT,,,,12.29,,,-25.48,,,,,,,,,,Added from 'JML ISOTOPE DATA',LT,Fish,6/1/2002,,entry correct
+,,T6711,T6711,,VERT,VERT,FISH,FISH,LT,LT,,,,12.94,,,-25.76,,,,,,,,,,Added from 'JML ISOTOPE DATA',LT,Fish,6/1/2002,,entry correct
+,,T6712,T6712,,VERT,VERT,FISH,FISH,LT,LT,,,,12.47,,,-25.76,,,,,,,,,,Added from 'JML ISOTOPE DATA',LT,Fish,6/1/2002,,entry correct
+,,T6713,T6713,,VERT,VERT,FISH,FISH,LT,LT,,,,12.5,,,-25.12,,,,,,,,,,Added from 'JML ISOTOPE DATA',LT,Fish,6/1/2002,,entry correct
+,,T6715,T6715,,VERT,VERT,FISH,FISH,LT,LT,,,,12.5,,,-26,,,,,,,,,,Added from 'JML ISOTOPE DATA',LT,Fish,6/1/2002,,entry correct
+,,T6716,T6716,,VERT,VERT,FISH,FISH,LT,LT,,,,12.33,,,-26.9,,,,,,,,,,Added from 'JML ISOTOPE DATA',LT,Fish,6/1/2002,,entry correct
+,,T6717,T6717,,VERT,VERT,FISH,FISH,LT,LT,,,,12.48,,,-23.8,,,,,,,,,,Added from 'JML ISOTOPE DATA',LT,Fish,5/25/2002,,entry correct
+,,T6718,T6718,,VERT,VERT,FISH,FISH,LT,LT,,,,10.61,,,-25.82,,,,,,,,,,Added from 'JML ISOTOPE DATA',LT,Fish,5/10/2002,,entry correct
+,,T6719,T6719,,VERT,VERT,FISH,FISH,LT,LT,,,,11.97,,,-24.55,,,,,,,,,,Added from 'JML ISOTOPE DATA',LT,Fish,5/8/2002,,entry correct
+,,T6720,T6720,,VERT,VERT,FISH,FISH,LT,LT,,,,12.55,,,-24.03,,,,,,,,,,Added from 'JML ISOTOPE DATA',LT,Fish,5/8/2002,,entry correct
+,,T6721,T6721,,VERT,VERT,FISH,FISH,LT,LT,,,,13.57,,,-24.76,,,,,,,,,,Added from 'JML ISOTOPE DATA',LT,Fish,5/7/2002,,entry correct
+,,T6722,T6722,,VERT,VERT,FISH,FISH,LT,LT,,,,11.94,,,-24.95,,,,,,,,,,Added from 'JML ISOTOPE DATA',LT,Fish,5/6/2002,,entry correct
+,,T6723,T6723,,VERT,VERT,FISH,FISH,LT,LT,,,,11.96,,,-24.85,,,,,,,,,,Added from 'JML ISOTOPE DATA',LT,Fish,4/20/2002,,entry correct
+,,T6724,T6724,,VERT,VERT,FISH,FISH,LT,LT,,,,11.98,,,-25.28,,,,,,,,,,Added from 'JML ISOTOPE DATA',LT,Fish,4/20/2002,,entry correct
+,,T6725,T6725,,VERT,VERT,FISH,FISH,LT,LT,,,,12.87,,,-24.33,,,,,,,,,,Added from 'JML ISOTOPE DATA',LT,Fish,4/20/2002,,entry correct
+,,T6726,T6726,,VERT,VERT,FISH,FISH,LT,LT,,,,12.49,,,-25.22,,,,,,,,,,Added from 'JML ISOTOPE DATA',LT,Fish,4/20/2002,,entry correct
+,,T6727,T6727,,VERT,VERT,FISH,FISH,LT,LT,,,,12.35,,,-25.3,,,,,,,,,,Added from 'JML ISOTOPE DATA',LT,Fish,4/18/2002,,entry correct
+,,T6728,T6728,,VERT,VERT,FISH,FISH,LT,LT,,,,12.66,,,-24.15,,,,,,,,,,Added from 'JML ISOTOPE DATA',LT,Fish,4/18/2002,,entry correct
+,,T6729,T6729,,VERT,VERT,FISH,FISH,LT,LT,,,,11.99,,,-25.45,,,,,,,,,,Added from 'JML ISOTOPE DATA',LT,Fish,3/9/2002,,entry correct
+,,T6730,T6730,,VERT,VERT,FISH,FISH,LT,LT,,,,12.37,,,-25.47,,,,,,,,,,Added from 'JML ISOTOPE DATA',LT,Fish,2/18/2002,,entry correct
+,,T6731,T6731,,VERT,VERT,FISH,FISH,LT,LT,,,,12.57,,,-25.19,,,,,,,,,,Added from 'JML ISOTOPE DATA',LT,Fish,2/18/2002,,entry correct
+,,T6732,T6732,,VERT,VERT,FISH,FISH,LT,LT,,,,11.2,,,-24.19,,,,,,,,,,Added from 'JML ISOTOPE DATA',LT,Fish,2/18/2002,,entry correct
+,,T6733,T6733,,VERT,VERT,FISH,FISH,LT,LT,,,,11.76,,,-25,,,,,,,,,,Added from 'JML ISOTOPE DATA',LT,Fish,2/18/2002,,entry correct
+,,T6734,T6734,,VERT,VERT,FISH,FISH,LT,LT,,,,12.55,,,-25.46,,,,,,,,,,Added from 'JML ISOTOPE DATA',LT,Fish,2/18/2002,,entry correct
+,,T6735,T6735,,VERT,VERT,FISH,FISH,LT,LT,,,,12.54,,,-25.69,,,,,,,,,,Added from 'JML ISOTOPE DATA',LT,Fish,2/17/2002,,entry correct
+,,T6736,T6736,,VERT,VERT,FISH,FISH,LT,LT,,,,12.18,,,-25.15,,,,,,,,,,Added from 'JML ISOTOPE DATA',LT,Fish,2/17/2002,,entry correct
+,,T6737,T6737,,VERT,VERT,FISH,FISH,LT,LT,,,,12.74,,,-25.34,,,,,,,,,,Added from 'JML ISOTOPE DATA',LT,Fish,2/17/2002,,entry correct
+,,T6738,T6738,,VERT,VERT,FISH,FISH,LT,LT,,,,13.27,,,-22.49,,,,,,,,,,Added from 'JML ISOTOPE DATA',LT,Fish,2/9/2002,,entry correct
+,,T6739,T6739,,VERT,VERT,FISH,FISH,LT,LT,,,,12.19,,,-25.65,,,,,,,,,,Added from 'JML ISOTOPE DATA',LT,Fish,2/8/2002,,entry correct
+,,T6740,T6740,,VERT,VERT,FISH,FISH,LT,LT,,,,12.19,,,-25.75,,,,,,,,,,Added from 'JML ISOTOPE DATA',LT,Fish,2/8/2002,,entry correct
+,,T6741,T6741,,VERT,VERT,FISH,FISH,LT,LT,,,,12.22,,,-25.02,,,,,,,,,,Added from 'JML ISOTOPE DATA',LT,Fish,12/15/2001,,entry correct
+,,T6743,T6743,,VERT,VERT,FISH,FISH,LT,LT,,,,11.29,,,-24.27,,,,,,,,,,Added from 'JML ISOTOPE DATA',LT,Fish,10/9/2001,,entry correct
+,,T6744,T6744,,VERT,VERT,FISH,FISH,LT,LT,,,,13.67,,,-24.27,,,,,,,,,,Added from 'JML ISOTOPE DATA',LT,Fish,10/9/2001,,entry correct
+,,T6745,T6745,,VERT,VERT,FISH,FISH,LT,LT,,,,11.07,,,-22,,,,,,,,,,Added from 'JML ISOTOPE DATA',LT,Fish,10/9/2001,,entry correct
+,,T6746,T6746,,VERT,VERT,FISH,FISH,LT,LT,,,,11.23,,,-23.56,,,,,,,,,,Added from 'JML ISOTOPE DATA',LT,Fish,10/9/2001,,entry correct
+,,T6747,T6747,,VERT,VERT,FISH,FISH,LT,LT,,,,12.6,,,-25.07,,,,,,,,,,Added from 'JML ISOTOPE DATA',LT,Fish,5/12/2001,,entry correct
+,,T6748,T6748,,VERT,VERT,FISH,FISH,LT,LT,,,,12.5,,,-24.86,,,,,,,,,,Added from 'JML ISOTOPE DATA',LT,Fish,5/10/2001,,entry correct
+,,T6749,T6749,,VERT,VERT,FISH,FISH,LT,LT,,,,12.69,,,-24.6,,,,,,,,,,Added from 'JML ISOTOPE DATA',LT,Fish,5/10/2001,,entry correct
+,,T6750,T6750,,VERT,VERT,FISH,FISH,LT,LT,,,,12.5,,,-25.33,,,,,,,,,,Added from 'JML ISOTOPE DATA',LT,Fish,5/18/2001,,entry correct
+,,T6751,T6751,,VERT,VERT,FISH,FISH,LT,LT,,,,11.83,,,-26.03,,,,,,,,,,Added from 'JML ISOTOPE DATA',LT,Fish,5/18/2001,,entry correct
+,,T6752,T6752,,VERT,VERT,FISH,FISH,LT,LT,,,,12.51,,,-25.24,,,,,,,,,,Added from 'JML ISOTOPE DATA',LT,Fish,5/11/2001,,entry correct
+,,T6753,T6753,,VERT,VERT,FISH,FISH,LT,LT,,,,12.86,,,-25.31,,,,,,,,,,Added from 'JML ISOTOPE DATA',LT,Fish,5/11/2001,,entry correct
+,,T6754,T6754,,VERT,VERT,FISH,FISH,LT,LT,,,,13.93,,,-22.86,,,,,,,,,,Added from 'JML ISOTOPE DATA',LT,Fish,5/10/2001,,entry correct
+,,T6755,T6755,,VERT,VERT,FISH,FISH,LT,LT,,,,13.67,,,-21.61,,,,,,,,,,Added from 'JML ISOTOPE DATA',LT,Fish,5/18/2001,,entry correct
+,,T6756,T6756,,VERT,VERT,FISH,FISH,LT,LT,,,,12.62,,,-24.83,,,,,,,,,,Added from 'JML ISOTOPE DATA',LT,Fish,5/10/2001,,entry correct
+,,T6758,T6758,,VERT,VERT,FISH,FISH,LT,LT,,,,12.2,,,-26.84,,,,,,,,,,Added from 'JML ISOTOPE DATA',LT,Fish,5/8/2001,,entry correct
+,,T6759,T6759,,VERT,VERT,FISH,FISH,LT,LT,,,,11.83,,,-26.15,,,,,,,,,,Added from 'JML ISOTOPE DATA',LT,Fish,5/8/2001,,entry correct
+,,T6761,T6761,,VERT,VERT,FISH,FISH,LT,LT,,,,12.84,,,-25.45,,,,,,,,,,Added from 'JML ISOTOPE DATA',LT,Fish,5/18/2001,,entry correct
+,,T6762,T6762,,VERT,VERT,FISH,FISH,LT,LT,,,,11.67,,,-25.12,,,,,,,,,,Added from 'JML ISOTOPE DATA',LT,Fish,5/18/2001,,entry correct
+,,T6763,T6763,,VERT,VERT,FISH,FISH,LT,LT,,,,11.55,,,-25.67,,,,,,,,,,Added from 'JML ISOTOPE DATA',LT,Fish,5/6/2001,,entry correct
+,,T6764,T6764,,VERT,VERT,FISH,FISH,LT,LT,,,,12.12,,,-24.8,,,,,,,,,,Added from 'JML ISOTOPE DATA',LT,Fish,5/8/2001,,entry correct
+,,T6765,T6765,,VERT,VERT,FISH,FISH,LT,LT,,,,12.69,,,-24.54,,,,,,,,,,Added from 'JML ISOTOPE DATA',LT,Fish,5/5/2001,,entry correct
+,,T6766,T6766,,VERT,VERT,FISH,FISH,LT,LT,,,,12.53,,,-25.98,,,,,,,,,,Added from 'JML ISOTOPE DATA',LT,Fish,5/12/2001,,entry correct
+,,T6767,T6767,,VERT,VERT,FISH,FISH,LT,LT,,,,11.48,,,-25.56,,,,,,,,,,Added from 'JML ISOTOPE DATA',LT,Fish,5/8/2001,,entry correct
+,,T6769,T6769,,VERT,VERT,FISH,FISH,LT,LT,,,,12.03,,,-25.66,,,,,,,,,,Added from 'JML ISOTOPE DATA',LT,Fish,8/25/2001,,entry correct
+,,T6770,T6770,,VERT,VERT,FISH,FISH,LT,LT,,,,11.94,,,-26.57,,,,,,,,,,Added from 'JML ISOTOPE DATA',LT,Fish,8/25/2001,,entry correct
+,,T6771,T6771,,VERT,VERT,FISH,FISH,LT,LT,,,,12.75,,,-22.73,,,,,,,,,,Added from 'JML ISOTOPE DATA',LT,Fish,8/19/2001,,entry correct
+,,T6773,T6773,,VERT,VERT,FISH,FISH,LT,LT,,,,14.49,,,-21.12,,,,,,,,,,Added from 'JML ISOTOPE DATA',LT,Fish,4/29/2000,,entry correct
+,,T6775,T6775,,VERT,VERT,FISH,FISH,LT,LT,,,,12.56,,,-24.83,,,,,,,,,,Added from 'JML ISOTOPE DATA',LT,Fish,5/5/2000,,entry correct
+,,T6776,T6776,,VERT,VERT,FISH,FISH,LT,LT,,,,10.28,,,-26.3,,,,,,,,,,Added from 'JML ISOTOPE DATA',LT,Fish,5/8/2000,,entry correct
+,,T6777,T6777,,VERT,VERT,FISH,FISH,LT,LT,,,,12.09,,,-26.68,,,,,,,,,,Added from 'JML ISOTOPE DATA',LT,Fish,5/4/2000,,entry correct
+,,T6778,T6778,,VERT,VERT,FISH,FISH,LT,LT,,,,12.32,,,-25.56,,,,,,,,,,Added from 'JML ISOTOPE DATA',LT,Fish,5/4/2000,,entry correct
+,,T6779,T6779,,VERT,VERT,FISH,FISH,LT,LT,,,,12.28,,,-23.27,,,,,,,,,,Added from 'JML ISOTOPE DATA',LT,Fish,5/4/2000,,entry correct
+,,T6783,T6783,,VERT,VERT,FISH,FISH,LT,LT,,,,12.39,,,-27.44,,,,,,,,,,Added from 'JML ISOTOPE DATA',LT,Fish,5/18/2000,,entry correct
+,,T6785,T6785,,VERT,VERT,FISH,FISH,LT,LT,,,,12.82,,,-25.93,,,,,,,,,,Added from 'JML ISOTOPE DATA',LT,Fish,5/2/2000,,entry correct
+,,T6786,T6786,,VERT,VERT,FISH,FISH,LT,LT,,,,11.92,,,-25.84,,,,,,,,,,Added from 'JML ISOTOPE DATA',LT,Fish,5/2/2000,,entry correct
+,,T7014,T7014,,VERT,VERT,FISH,FISH,LT,LT,,,,11.7,,,-24.9,,,,,,,,,,Added from 'JML ISOTOPE DATA',LT,Fish,4/22/2002,,entry correct
+,,T7061,T7061,,VERT,VERT,FISH,FISH,LT,LT,,,,11.75,,,-27.22,,,,,,,,,,Added from 'JML ISOTOPE DATA',LT,Fish,7/20/2002,,entry correct
+,,T7062,T7062,,VERT,VERT,FISH,FISH,LT,LT,,,,11.82,,,-25.92,,,,,,,,,,Added from 'JML ISOTOPE DATA',LT,Fish,7/18/2002,,entry correct
+,,T7063,T7063,,VERT,VERT,FISH,FISH,LT,LT,,,,11.83,,,-26.64,,,,,,,,,,Added from 'JML ISOTOPE DATA',LT,Fish,7/18/2002,,entry correct
+,,T7064,T7064,,VERT,VERT,FISH,FISH,LT,LT,,,,12.45,,,-26.25,,,,,,,,,,Added from 'JML ISOTOPE DATA',LT,Fish,7/18/2002,,entry correct
+,,T7065,T7065,,VERT,VERT,FISH,FISH,LT,LT,,,,12.49,,,-26,,,,,,,,,,Added from 'JML ISOTOPE DATA',LT,Fish,7/18/2002,,entry correct
+,,T7066,T7066,,VERT,VERT,FISH,FISH,LT,LT,,,,12.48,,,-25.69,,,,,,,,,,Added from 'JML ISOTOPE DATA',LT,Fish,7/18/2002,,entry correct
+,,T7067,T7067,,VERT,VERT,FISH,FISH,LT,LT,,,,11.88,,,-27.23,,,,,,,,,,Added from 'JML ISOTOPE DATA',LT,Fish,7/18/2002,,entry correct
+,,T7068,T7068,,VERT,VERT,FISH,FISH,LT,LT,,,,11.39,,,-27.02,,,,,,,,,,Added from 'JML ISOTOPE DATA',LT,Fish,7/18/2002,,entry correct
+,,T7069,T7069,,VERT,VERT,FISH,FISH,LT,LT,,,,12.85,,,-24.53,,,,,,,,,,Added from 'JML ISOTOPE DATA',LT,Fish,7/18/2002,,entry correct
+,,T7070,T7070,,VERT,VERT,FISH,FISH,LT,LT,,,,13.01,,,-24.66,,,,,,,,,,Added from 'JML ISOTOPE DATA',LT,Fish,7/18/2002,,entry correct
+,,T7071,T7071,,VERT,VERT,FISH,FISH,LT,LT,,,,12.63,,,-25.07,,,,,,,,,,Added from 'JML ISOTOPE DATA',LT,Fish,7/31/2002,,entry correct
+,,T7072,T7072,,VERT,VERT,FISH,FISH,LT,LT,,,,11.87,,,-26.32,,,,,,,,,,Added from 'JML ISOTOPE DATA',LT,Fish,7/31/2002,,entry correct
+,,T7076,T7076,,VERT,VERT,FISH,FISH,LT,LT,,,,11.56,,,-26.75,,,,,,,,,,Added from 'JML ISOTOPE DATA',LT,Fish,8/28/2002,,entry correct
